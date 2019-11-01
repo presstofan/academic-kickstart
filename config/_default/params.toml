@@ -9,7 +9,7 @@
 #   Latest themes (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in themes in `themes/academic/data/themes/`
 #   Browse user installed themes in `data/themes/`
-theme = "minimal"
+theme = "Rose" # 1950s, Apogee, Coffee, Dark, Forest, Minimal, Mr Robot, Ocean, Rose, Strawberry
 
 # Enable users to switch between day and night mode?
 day_night = true
@@ -18,11 +18,11 @@ day_night = true
 #   Latest font sets (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in font sets in `themes/academic/data/fonts/`
 #   Browse user installed font sets in `data/fonts/`
-font = ""
+font = "classic"
 
 # Choose a font size.
 # Sizes: XS (extra small), S (small), M (medium), L (large - DEFAULT), XL (extra large)
-font_size = "M"
+font_size = "L"
 
 ############################
 ## Basic Info
@@ -75,7 +75,7 @@ privacy_pack = false
 
 # Enable visitors to edit pages?
 #   `repo` defines the repository URL. `editable` defines which page types can be edited.
-edit_page = {repo_url = "https://github.com/gcushen/hugo-academic", repo_branch = "master", editable = {docs = true, page = false, post = false}}
+# edit_page = {repo_url = "https://github.com/gcushen/hugo-academic", repo_branch = "master", editable = {docs = true, page = false, post = false}}
 
 ############################
 ## Contact details
@@ -85,7 +85,7 @@ edit_page = {repo_url = "https://github.com/gcushen/hugo-academic", repo_branch 
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "test@example.org"
+email = "fanyihui01@gmail.com"
 # phone = "888 888 88 88"
 
 # Address
@@ -109,10 +109,11 @@ email = "test@example.org"
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
 contact_links = [
-  {icon = "twitter", icon_pack = "fab", name = "DM Me", link = "https://twitter.com/PresstoFan"},
+  {icon = "twitter", icon_pack = "fab", name = "Twitter", link = "https://twitter.com/PresstoFan"},
+  {icon = "linkedin", icon_pack = "fab", name = "LinkedIn", link = "https://www.linkedin.com/in/yihui-fan-datascience"},
   # {icon = "skype", icon_pack = "fab", name = "Skype Me", link = "skype:echo123?call"},
   # {icon = "keybase", icon_pack = "fab", name = "Chat on Keybase", link = "https://keybase.io/"},
-  {icon = "comments", icon_pack = "fas", name = "Discuss on Forum", link = "https://discourse.gohugo.io"},
+  # {icon = "comments", icon_pack = "fas", name = "Discuss on Forum", link = "https://discourse.gohugo.io"},
   # {icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Telegram"},
   ]
 
@@ -195,14 +196,14 @@ plugins_js  = []
   #   0: Disabled
   #   1: Disqus (https://disqus.com)
   #   2: Commento (https://commento.io)
-  engine = 0
+  engine = 1
 
   # Which page types are commentable?
   commentable = {page = true, post = true, docs = true, project = true, publication = true, talk = true}
 
   # Configuration of Disqus.
   [comments.disqus]
-    shortname = ""  # Paste the shortname from your Disqus dashboard.
+    shortname = "databentobox"  # Paste the shortname from your Disqus dashboard.
     show_count = true  # Show comment count in page header? (true/false)
 
 ############################

@@ -43,7 +43,8 @@
 
 [[buttons]]
   id = "weibo"
-  url = "https://service.weibo.com/share/share.php?url={url}&title={title}"
+  # url = "https://service.weibo.com/share/share.php?url={url}&title={title}"
+  url = "http://service.weibo.com/share/share.php?url={url}&appkey=&title={title}Description&pic=&ralateUid=&language=zh_cn" 
   title = "Weibo"
   icon_pack = "fab"
   icon = "weibo"
@@ -55,7 +56,7 @@
   title = "Reddit"
   icon_pack = "fab"
   icon = "reddit-alien"
-  enable = false
+  enable = true
 
 [[buttons]]
   id = "pinterest"

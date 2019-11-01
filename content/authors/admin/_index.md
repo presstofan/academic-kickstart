@@ -15,27 +15,28 @@ role: Data Scientist
 # Organizations/Affiliations
 organizations:
 - name: Decision Technology
-  url: ""
+  url: "https://www.dectech.co.uk/#/home"
 
 # Short bio (displayed in user profile at end of posts)
 bio: My research interests include distributed robotics, mobile computing and programmable matter.
 
 interests:
-- Artificial Intelligence
+- Statistical Modelling
 - Computational Linguistics
-- Information Retrieval
+- Artificial Intelligence
+- Behavioural Science
 
-# education:
-#   courses:
-#   - course: PhD in Artificial Intelligence
-#     institution: Stanford University
-#     year: 2012
-#   - course: MEng in Artificial Intelligence
-#     institution: Massachusetts Institute of Technology
-#     year: 2009
-#   - course: BSc in Artificial Intelligence
-#     institution: Massachusetts Institute of Technology
-#     year: 2008
+education:
+  courses:
+  - course: MSc in Machine Learning
+    institution: Birkbeck, University of London
+    year: 2018
+  - course: MSc in Quantitative Social Science
+    institution: University of Oxford
+    year: 2014
+  - course: BA Linguistics and Sociology 
+    institution: University of Manchester
+    year: 2013
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
@@ -54,6 +55,9 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/presstofan
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/yihui-fan-datascience/
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.  
 # - icon: cv
@@ -70,4 +74,6 @@ user_groups:
 - Visitors
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate. 
+Working as a data scientist in a management consulting firm, my job involves helping businesses and policymakers to understand and manage consumer decision-making, solving business problems, generating data-driven insights, and developing data products.
+
+I am also an AI / deep learning enthusiast and enjoy taking part in data science competitions and open source projects.
