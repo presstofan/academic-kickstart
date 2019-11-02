@@ -28,11 +28,11 @@ image:
 projects: []
 ---
 
-I have recently completed a small research project in which I need to check how many followers of a particular Twitter account are actual human and how many are bots. Bots are not always bad, some bots were built to be interesting and helpful. Nevertheless, there are also bots that spam you or simply do not interact with you in any healthy way. The following scripts get all the followers from a Twitter account and pass the relevant information to an online bot detector called `Botometer (formerly BotOrNot)` (click [here](https://botometer.iuni.iu.edu) for more information). It checks the activity of a Twitter account and gives it a score based on how likely the account is to be a bot. Higher scores are more bot-like. About 30% of the followers of the two accounts I have tested are bots or have some bot-like behaviors. Want to find about your account? Ok, here we go.
+I have recently completed a small research project in which I need to check how many followers of a particular Twitter account are actual human and how many are bots. Bots are not always bad, some bots were built to be interesting and helpful. Nevertheless, there are also bots that spam you or simply do not interact with you in any healthy way. The following scripts get all the followers from a Twitter account and pass the relevant information to an online bot detector called `Botometer (formerly BotOrNot)` (click [here](https://botometer.iuni.iu.edu) for more information). It checks the activity of a Twitter account and gives it a score based on how likely the account is to be a bot. Higher scores are more bot-like. About 30% of the followers of the two accounts I have tested are bots or have some bot-like behaviours. Want to find about your account? Ok, here we go.
 
 ## Step 1: Get all the followers for your account
 
-The following script does the trick. It utilize the Twitter API(`tweepy`) and `MongoDB` (which needs to be set up separately). The script can also deal with Twitter API rate limit. Note that you will need Twitter API credentials.
+The following script does the trick. It utilizes the Twitter API(`tweepy`) and `MongoDB` (which needs to be set up separately). The script can also deal with Twitter API rate limit. Note that you will need Twitter API credentials.
 
 ```python
 import tweepy
@@ -239,6 +239,6 @@ if __name__ == '__main__':
   main()
 ```
 
-Some Twitter bots also have a unique signature in their networks. For example, networks of bots tend to have a less 'organic' structure and feel more artificial. Below is a Twitter followers network graph containing a large number of bots made by [Terence Eden](https://shkspr.mobi/blog/copyright-terence-eden/). Check [this post](https://shkspr.mobi/blog/2015/03/this-is-what-a-graph-of-8000-fake-twitter-accounts-looks-like/) for more interesting analysis of this pattern.
+Some Twitter bots also have a unique signature in their networks. For example, networks of bots tend to have a less 'organic' structure and feel more artificial. Below is a Twitter followers network graph containing a large number of bots made by [Terence Eden](https://shkspr.mobi/blog/copyright-terence-eden/). Check [this post](https://shkspr.mobi/blog/2015/03/this-is-what-a-graph-of-8000-fake-twitter-accounts-looks-like/) for some interesting analysis of this pattern.
 
 ![Circle of Spam by Terence Eden](./circles-of-spam-fs8.png)

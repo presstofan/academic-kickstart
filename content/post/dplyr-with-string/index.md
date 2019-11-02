@@ -61,7 +61,7 @@ The `filter()` function in `dplyr` (and other similar functions from the
 package) use something called non-standard evaluation (NSE). In NSE,
 names are treated as string literals. So just using ‘gender’ (without quotes) in the
 function above works fine. This is in contrast with functions using
-standard evaluation (SE). For example, the following of indexing column
+standard evaluation (SE). For example, the following code of indexing column
 in a data frame will give an error.
 
 ``` r
@@ -125,12 +125,6 @@ of a named object.
 var <- "gender" # this is a string
 val <- "female" # this is a string
 
-sym(var)
-```
-
-    ## gender
-
-``` r
 df %>%
     filter(., get(var) == val)
 ```

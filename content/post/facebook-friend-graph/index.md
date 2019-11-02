@@ -319,7 +319,7 @@ nx.draw_networkx(G, pos = pos, with_labels=False,
                  node_size=15, width=0.3, node_color='blue', edge_color='grey')
 limits=plt.axis('off') # turn of axis
 ```
-Below is the network graph generated. Blue dots (call "nodes") are friends and the lines (called "edges") are friendship ties. Since this is my Facebook friend network, everyone is connected to me (the central node). This visualisation uses force-directed layout function to calculate the position of each node. Force-directed layout works like springs (hence the name `spring_layout`). Imagine there are two types force: 1) spring-like attractive forces (based on Hooke's law) which attract pairs of endpoints of the graph's edges towards each other and 2) simultaneously repulsive forces (like those of electrically charged particles based on Coulomb's law) which separate all pairs of nodes. In equilibrium states for this system of forces, the edges tend to have uniform length (because of the spring forces), and nodes that are not connected by an edge tend to be drawn further apart (because of the electrical repulsion). Note that we have store
+Below is the network graph generated. Blue dots (call "nodes") are friends and the lines (called "edges") are friendship ties. Since this is my Facebook friend network, everyone is connected to me (the central node). This visualisation uses a force-directed layout function to calculate the position of each node. Force-directed layouts work like springs (hence the name `spring_layout`). Imagine there are two types force: 1) spring-like attractive forces (based on Hooke's law) which attract pairs of endpoints of the graph's edges towards each other and 2) simultaneously repulsive forces (like those of electrically charged particles based on Coulomb's law) which separate all pairs of nodes. In equilibrium states for this system of forces, the edges tend to have uniform length (because of the spring forces), and nodes that are not connected by an edge tend to be drawn further apart (because of the electrical repulsion).
 
 ![Facebook Friends Network Graph](./facebook_graph.png)
 
@@ -421,7 +421,7 @@ limits=plt.axis('off') # turn of axisb
 
 ![Facebook Friends Network Graph Between](./facebook_graph_between.png)
 
-`networkx` normalises Betweenness Centrality by for a node v by calculating the sum of the fraction of all-pairs shortest paths that pass through v. The few nodes that have been highlighted by this metrics are my friends who belong to more than one communities. For example, they could be my high school friends who also went to the same uni with me. 
+`networkx` normalises Betweenness Centrality by for a node v by calculating the sum of the fraction of all-pairs shortest paths that pass through v. The few nodes that have been highlighted by this metrics are my friends who belong to more than one communities. For example, they could be my high school friends who also went to the same uni as me. 
 
 There are also other types of Centrality. The [networkx](https://networkx.github.io/documentation/networkx-1.10/reference/algorithms.centrality.html) documentation list a few more. Eigenvector Centrality is a useful one. The idea behind it is that a node must have a high score if connected to nodes that are themselves well connected. Google's PageRank algorithm for their earlier search engine is a variant of Eigenvector Centrality. Feel free to check it out.
 
