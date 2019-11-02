@@ -28,7 +28,9 @@ image:
 projects: []
 ---
 
-I have recently been asked to generate a social network graph to show how friends on Facebook are connected. This type of network graph can be used to identify communities as well as the gatekeepers of each community in the network, the value of which has been explained in the iconic paper [The Strength of Weak Ties](https://www.jstor.org/stable/2776392?seq=1#page_scan_tab_contents) by Mark Granovetter. [Here](https://www.forbes.com/sites/jacobmorgan/2014/03/11/every-employee-weak-ties-work/) is a more accessible article about this idea. The post has two parts: Part I is about retrieving the friend data we need for building the network. Part II and Part III are the more exciting parts where we will run some Analyses on the network. So here it goes.
+I have recently been asked to generate a social network graph to show how friends on Facebook are connected. This type of network graph can be used to identify communities as well as the gatekeepers of each community in the network, the value of which has been explained in the iconic paper [The Strength of Weak Ties](https://www.jstor.org/stable/2776392?seq=1#page_scan_tab_contents) by Mark Granovetter. [Here](https://www.forbes.com/sites/jacobmorgan/2014/03/11/every-employee-weak-ties-work/) is a more accessible article about this idea. 
+
+I hope this post can serve as a guide to a quick and simple exploratory of social network and its basic metrics. There are three parts: Part I is about retrieving the friend data we need for building the network. Part II and Part III are the more exciting parts where we will run some analyses on the network. So here it goes.
 
 
 # Part I: Retrieve Facebook Friend Data
