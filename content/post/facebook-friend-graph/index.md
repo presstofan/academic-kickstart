@@ -32,20 +32,17 @@ I have recently been asked to generate a social network graph to show how friend
 
 I hope this post can serve as a guide to a quick and simple exploratory of social network and its basic metrics. There are three parts: Part I is about retrieving the friend data we need for building the network. Part II and Part III are the more exciting parts where we will run some analyses on the network. So here it goes.
 
-
-# Part I: Retrieve Facebook Friend Data
+## Part I: Retrieve Facebook Friend Data
 
 It used to be much easier to generate graphs like this (through some 3rd part apps or the Facebook API) but Facebook is getting increasingly strict about what data can be accessed through the API. The `all_mutual_friends`, `mutual_friends`, and `three_degree_mutual_friends` context edges of the Facebook Social Context API were deprecated on April 4, 2018, and immediately started returning empty data sets. They have now been fully removed. This post presents an alternative way to retrieve Facebook friend network with the help of Python and Selenium Webdriver.
 
-
-## Step 1: Set up Selenium ChromeDriver
+### Step 1: Set up Selenium ChromeDriver
 
 In order to make the script work, we will need to set up Selenium ChromeDriver first. ChromeDriver is a web automation framework that allows you to control the behaviours of the Chrome browser using a programming language (Python in this case). I found [this guide from Chris Kenst](https://www.kenst.com/2015/03/installing-chromedriver-on-mac-osx) particularly useful for making the ChromeDriver work on macOS.
 
+### Step 2: Set up the helper functions
 
-## Step 2: Set up the helper functions
-
-Once making sure the ChromeDriver, the following script by [Lucas Allen](https://github.com/lgallen/twitter-graph) and modified by [Eliot Andres](https://github.com/EliotAndres/facebook-friend-graph) can be used to scrap the friend network. First, we will need to load a couple of useful packages. Note that I have used Python 3 to build the script below. You might need to set up a virtual environment to make it works. I would recommend [Pipenv] (https://docs.pipenv.org/en/latest/) for future-proofing your virtual environment management workflow. 
+Once making sure the ChromeDriver, the following script by [Lucas Allen](https://github.com/lgallen/twitter-graph) and modified by [Eliot Andres](https://github.com/EliotAndres/facebook-friend-graph) can be used to scrap the friend network. First, we will need to load a couple of useful packages. Note that I have used Python 3 to build the script below. You might need to set up a virtual environment to make it works. I would recommend [Pipenv](https://docs.pipenv.org/en/latest/) for future-proofing your virtual environment management workflow.
 
 Below are a couple of key modules that we will use in the script:
 
@@ -66,6 +63,7 @@ from tqdm import tqdm
 import pickle
 import getpass
 ```
+
 Now, we will need to code up several functions that help to navigate through Facebook pages. Facebook pages are not static and many of them are using AJAX (Asynchronous JavaScript And XML), which allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page. For example, when visiting the friend page, only the first few friends are listed. But more friends will be loaded once the user scrolls down to the bottom of the page. The `get_fb_page` function does exactly that. Given a page, the function will determine the height of the body to calculate the scrolling distance, scroll down to the bottom, wait for a while for the AJAX to load new content, calculate new scrolling distance and scroll down again. It will stop when no new content can be loaded.
 
 ```python
@@ -122,8 +120,7 @@ class MyHTMLParser(HTMLParser):
                             self.urls.append(value)
 ```
 
-
-## Step 3: Execute the scrapping plan
+### Step 3: Execute the scrapping plan
 
 Once we have loaded all the functions and packages above, we can use the following script to log in to Facebook. It will prompt you to input username and password for the login.
 
@@ -219,13 +216,12 @@ for url in tqdm(uniq_urls):
 
     time.sleep(5)
 ```
+
 It will take a while to retrieve all the friends but when it is done, friend names and their connections should be stored in the pickle file `friend_graph.pickle`.  In the next part, we will have some fun analysing the friend network.
 
+## Part II: Plotting the Social Network and Basic Analysis
 
-# Part II: Plotting the Social Network and Basic Analysis
-
-
-## Step 1: Load packages and data
+### Step 1: Load packages and data
 
 Below are a couple of key modules we will use in the script:
 
@@ -238,7 +234,7 @@ Below are a couple of key modules we will use in the script:
 %matplotlib inline
 import matplotlib.pyplot as plt
 # Set the size of the graph
-plt.rcParams['figure.figsize'] = [10, 10] 
+plt.rcParams['figure.figsize'] = [10, 10]
 
 import community
 import networkx as nx
@@ -261,8 +257,7 @@ with open(GRAPH_FILENAME, 'rb') as f:
 
 `friend_graph` is a dictionary of lists in the form of {'friend1': ['friend2, 'friend3']}, where the keys are each of your friends and the value lists have all your mutual friends.
 
-
-## Step 2: Clean the data and reshape it to a suitable network data structure
+### Step 2: Clean the data and reshape it to a suitable network data structure
 
 Before plotting and analysing the network, we need to do some pre-work. First, we may want to get rid of the friends which whom we do not have any mutual friend. After all, we are interested in groups and communities so friends without mutual friends do not add much value. Of course, you can skip this step if you want to keep them.
 
@@ -277,7 +272,7 @@ for k, v in friend_graph.items():
     intersection_size = len(np.intersect1d(list(friend_graph.keys()), v))
     if intersection_size > 2:
         central_friends[k] = v
-        
+
 print('Firtered out {} items'.format(len(friend_graph.keys()) - len(central_friends.keys())))
 ```
 
@@ -295,8 +290,7 @@ for k, v in central_friends.items():
             edges.append((k, item))
 ```
 
-
-## Step 3: Create a network object and visualise the network
+### Step 3: Create a network object and visualise the network
 
 Now, we will use the `networkx` module to create a network object out of the edge list.
 
@@ -319,14 +313,14 @@ nx.draw_networkx(G, pos = pos, with_labels=False,
                  node_size=15, width=0.3, node_color='blue', edge_color='grey')
 limits=plt.axis('off') # turn of axis
 ```
+
 Below is the network graph generated. Blue dots (call "nodes") are friends and the lines (called "edges") are friendship ties. Since this is my Facebook friend network, everyone is connected to me (the central node). This visualisation uses a force-directed layout function to calculate the position of each node. Force-directed layouts work like springs (hence the name `spring_layout`). Imagine there are two types force: 1) spring-like attractive forces (based on Hooke's law) which attract pairs of endpoints of the graph's edges towards each other and 2) simultaneously repulsive forces (like those of electrically charged particles based on Coulomb's law) which separate all pairs of nodes. In equilibrium states for this system of forces, the edges tend to have uniform length (because of the spring forces), and nodes that are not connected by an edge tend to be drawn further apart (because of the electrical repulsion).
 
 ![Facebook Friends Network Graph](./facebook_graph.png)
 
 The visualisation is already quite illuminating as it shows the different communities in my friend network. I can roughly tell where their boundaries are. However, let's be more precise and use a mathematical algorithm to do the job.
 
-
-## Step 4: Detect communities
+### Step 4: Detect communities
 
 In this step, we'll colour the different friend communities. We'll use the louvain method described in Fast unfolding of communities in large networks, Vincent D Blondel, Jean-Loup Guillaume, Renaud Lambiotte, Renaud Lefebvre, Journal of Statistical Mechanics: Theory and Experiment 2008(10), P10008 (12pp). Codes are [here](https://github.com/taynaud/python-louvain) and the details of the method can be found in [this Wikipedia page](https://en.wikipedia.org/wiki/Louvain_modularity).
 
@@ -336,32 +330,30 @@ values = [part.get(node) for node in G.nodes()]
 
 plt.rcParams['figure.figsize'] = [10, 10]
 nx.draw_networkx(G, pos = pos, 
-                 cmap = plt.get_cmap('tab10'), node_color = values, 
+                 cmap = plt.get_cmap('tab10'), node_color = values,
                  node_size=20, width=0.3, edge_color='grey', with_labels=False)
 limits=plt.axis('off') # turn of axisb
 ```
 
 ![Facebook Friends Network Graph Commmunities](./facebook_graph_comm.png)
 
-6 communities have emerged and they correspond to my friends from school, undergraduate, postgraduate and work. I have removed all the labels for privacy but you could add them in yourselves. You might find a couple of interesting links between groups of friends that you were not aware of before! 
+6 communities have emerged and they correspond to my friends from school, undergraduate, postgraduate and work. I have removed all the labels for privacy but you could add them in yourselves. You might find a couple of interesting links between groups of friends that you were not aware of before!
 
-
-# Part III: Centrality
+## Part III: Centrality
 
 In network analysis, indicators of centrality identify the most important node within a network. Some useful applications of this kind of measures include identifying the most influential person(s) in a social network, key infrastructure nodes in the Internet or urban networks, and super-spreaders of disease. Now, let's go through some popular measures of network centrality.
 
+### Degree Centrality
 
-## Degree Centrality
-
-Degree Centrality is simply defined as the total number of direct contact. In directed networks (i.e. the connections between nodes have direction), Degree Centrality can be calculated as In-degree or Out-degree. But for my Facebook network, the connections work both ways hence we will only deal with one Degree Centrality. In addition to a measure of popularity, it can be seen as an index of exposure to what is flowing through the network. For example, in a gossip network, a central actor more likely to hear a given bit of gossip. It can also be interpreted as the opportunity to influence and be influenced directly. Let's calculate the Degree Centrality for each node in my Facebook network and visualise it. Note that I will remove myself from the network for the centrality calculation below since by definition I am connected to everyone in my friend network, which is kind of meaningless. 
+Degree Centrality is simply defined as the total number of direct contact. In directed networks (i.e. the connections between nodes have direction), Degree Centrality can be calculated as In-degree or Out-degree. But for my Facebook network, the connections work both ways hence we will only deal with one Degree Centrality. In addition to a measure of popularity, it can be seen as an index of exposure to what is flowing through the network. For example, in a gossip network, a central actor more likely to hear a given bit of gossip. It can also be interpreted as the opportunity to influence and be influenced directly. Let's calculate the Degree Centrality for each node in my Facebook network and visualise it. Note that I will remove myself from the network for the centrality calculation below since by definition I am connected to everyone in my friend network, which is kind of meaningless.
 
 ```python
 # remove myself from the graph
-G_f = copy.deepcopy(G) 
+G_f = copy.deepcopy(G)
 G_f.remove_node(CENTRAL_ID)
 
 # keep the position
-pos_f = copy.deepcopy(pos) 
+pos_f = copy.deepcopy(pos)
 pos_f.pop(CENTRAL_ID, None)
 
 # Degree centrality
@@ -370,17 +362,17 @@ values = [degree.get(node)*500 for node in G_f.nodes()]
 
 plt.rcParams['figure.figsize'] = [10, 10]
 nx.draw_networkx(G_f, pos =pos_f,
-                 cmap = plt.get_cmap('Reds'), 
-                 node_color = values, node_size=values, 
+                 cmap = plt.get_cmap('Reds'),
+                 node_color = values, node_size=values,
                  width=0.2, edge_color='grey', with_labels=False)
 limits=plt.axis('off') # turn of axisb
 ```
+
 ![Facebook Friends Network Graph Degree](./facebook_graph_degree.png)
 
 The result is illuminating as it highlights my friends who have the most mutual friends with me. Note that they are not necessarily the people who have the largest number of friends on Facebook as the network is biased towards me. Also, note that the Degree Centrality calculated by `networkx` has been normalised by the total number of possible connections in the network.
 
-
-## Closeness Centrality
+### Closeness Centrality
 
 Closeness Centrality is defined as the sum of geodesic distances (shortest path) to all other nodes. It is an inverse measure of centrality as the higher the metric, the further apart the node from other nodes. It can be seen as the index of the expected time of arrival for whatever is flowing through the network for a given node. For example in a gossip network, the central player tends to hear things first.
 
@@ -389,8 +381,8 @@ Closeness Centrality is defined as the sum of geodesic distances (shortest path)
 close = nx.closeness_centrality(G_f)
 values = [close.get(node)*100 for node in G_f.nodes()]
 
-nx.draw_networkx(G_f, pos = pos_f, 
-                 cmap = plt.get_cmap('Blues'), 
+nx.draw_networkx(G_f, pos = pos_f,
+                 cmap = plt.get_cmap('Blues'),
                  node_color = values, node_size=values,
                  width=0.2, edge_color='grey', with_labels=False)
 
@@ -401,19 +393,18 @@ limits=plt.axis('off') # turn of axisb
 
 The graph above shows my friend network with the size of the nodes reflects the Closeness Centrality. Since the sum of distances depends on the number of nodes in the graph, closeness is normalized by the sum of the minimum possible distances n-1. Nothing too interesting here and we would possibly need a bigger more complete network to see the difference.
 
+### Betweenness Centrality
 
-## Betweenness Centrality
-
-Betweenness Centrality is a measure of how often a node lies along the shortest path between two other nodes. It can be seen as an index of potential for gatekeeping, brokering, controlling the flow, and also of liaising otherwise separate parts of the network. it often indicates power and access to the diversity of whatever flows in the network and the potential for synthesizing. Nodes with high Betweenness Centrality are usually bridges between groups or k-local bridges. 
+Betweenness Centrality is a measure of how often a node lies along the shortest path between two other nodes. It can be seen as an index of potential for gatekeeping, brokering, controlling the flow, and also of liaising otherwise separate parts of the network. it often indicates power and access to the diversity of whatever flows in the network and the potential for synthesizing. Nodes with high Betweenness Centrality are usually bridges between groups or k-local bridges.
 
 ```python
 #  Betweeness centrality
 between = nx.betweenness_centrality(G_f)
 values = [between.get(node)*500 for node in G_f.nodes()]
 
-nx.draw_networkx(G_f, pos = pos_f, 
-                 cmap = plt.get_cmap('Greens'), 
-                 node_color = values, node_size=values, 
+nx.draw_networkx(G_f, pos = pos_f,
+                 cmap = plt.get_cmap('Greens'),
+                 node_color = values, node_size=values,
                  width=0.2, edge_color='grey', with_labels=False)
 
 limits=plt.axis('off') # turn of axisb
@@ -421,7 +412,7 @@ limits=plt.axis('off') # turn of axisb
 
 ![Facebook Friends Network Graph Between](./facebook_graph_between.png)
 
-`networkx` normalises Betweenness Centrality by for a node v by calculating the sum of the fraction of all-pairs shortest paths that pass through v. The few nodes that have been highlighted by this metrics are my friends who belong to more than one communities. For example, they could be my high school friends who also went to the same uni as me. 
+`networkx` normalises Betweenness Centrality by for a node v by calculating the sum of the fraction of all-pairs shortest paths that pass through v. The few nodes that have been highlighted by this metrics are my friends who belong to more than one communities. For example, they could be my high school friends who also went to the same uni as me.
 
 There are also other types of Centrality. The [networkx](https://networkx.github.io/documentation/networkx-1.10/reference/algorithms.centrality.html) documentation list a few more. Eigenvector Centrality is a useful one. The idea behind it is that a node must have a high score if connected to nodes that are themselves well connected. Google's PageRank algorithm for their earlier search engine is a variant of Eigenvector Centrality. Feel free to check it out.
 

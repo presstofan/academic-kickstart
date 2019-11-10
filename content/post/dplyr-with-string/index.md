@@ -135,5 +135,37 @@ df %>%
     ## 3  5 female
 
 The first method addresses the NSE of the `filter()` function while the
-second method tricks it to get the job done. Both work just fine. Happy
-hacking!
+second method tricks it to get the job done. Both work just fine.
+
+If we don't want to pass a string but a name instead, the `tidyverse` has recently introduced a `{{}}` (#curly-curly') operator for tidy evaluation.
+
+```{r}
+library(tidyverse)
+
+squirrels <- read_csv(str_c(
+  "https://raw.githubusercontent.com/",
+  "rfordatascience/tidytuesday/master/",
+  "data/2019/2019-10-29/nyc_squirrels.csv"))
+
+count_groups <- function(df, groupvar){
+  df %>%
+    group_by({{ groupvar }}) %>%
+    count()
+}
+
+count_groups(squirrels, climbing)
+```
+
+See now we can pass the variable name `climbing` to the `group_by` function using the `{{}}` operator. In the past, we have to use the more cumbersome `!! enquo` (quote-unquote) trick to achieve somthing similar. 
+
+```{r}
+count_groups_old <- function(df, groupvar){
+  df %>%
+    group_by(!! enquo(groupvar)) %>%
+    count()
+}
+
+count_groups_old(squirrels, climbing)
+```
+
+Happy hacking!
