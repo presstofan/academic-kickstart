@@ -3,7 +3,7 @@
 
 title: "Deploying R Shiny apps using ShinyProxy on Windows 10"
 subtitle: ""
-summary: ""
+summary: "This post 1) reviews the popular options of deploying R Shiny apps and 2) explores a way of deploying Shiny apps with ShinyProxy, an open source tool with enterprise features."
 authors: [Yihui Fan]
 tags: [R, R Shiny, ShinyProxy]
 categories: [Data Science]
