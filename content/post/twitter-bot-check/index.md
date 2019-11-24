@@ -9,7 +9,7 @@ tags: [Python, Social Media, MongoDB]
 categories: [Data Science]
 date: 2016-07-18T16:37:14Z
 lastmod: 2016-07-18T16:37:14Z
-featured: false
+featured: true
 draft: false
 
 # Featured image

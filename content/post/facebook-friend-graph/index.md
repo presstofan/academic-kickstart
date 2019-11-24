@@ -9,7 +9,7 @@ tags: [Python, Social Network, Network Analysis]
 categories: [Data Science]
 date: 2019-07-28T13:30:00Z
 lastmod: 2019-11-01T16:47:45Z
-featured: false
+featured: true
 draft: false
 
 # Featured image
