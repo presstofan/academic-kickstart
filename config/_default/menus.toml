@@ -9,6 +9,11 @@
   weight = 80
 
 [[main]]
+  name = "Links"
+  url = "#blogroll"
+  weight = 70
+
+[[main]]
   name = "Recent Posts"
   url = "#posts"
   weight = 20

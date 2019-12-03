@@ -56,7 +56,7 @@ Pros:
 Cons:
 
 * Limitations in the basic plans (e.g. less Active Hours, no authentication, single instance, etc.)
-* Less cost-efficient than the DYI options. You are of course paying for the fully managed platform!
+* Less cost-efficient than the DIY options. You are of course paying for the fully managed platform!
 * Scalability: It can only offer instance up to 8GB of RAM and according to them: shinyapps.io does not make any guarantees regarding the number of CPU cores, or the speed of the CPUs that are allocated to the deployed applications. So it might not be suitable for super computationally intensive apps.
 * Very basic UI with limited customisability
 
