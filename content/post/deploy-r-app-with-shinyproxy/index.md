@@ -472,6 +472,7 @@ When the pulling is done, we need to tag the images so that the names of the ima
 
 ```{sh}
 docker tag YOUR_USERNAME/shiny-euler-app shiny-euler-app
+docker tag YOUR_USERNAME/shinyproxy-example shinyproxy-example
 ```
 
 Now, let's create the container network on the EC2 instance.
