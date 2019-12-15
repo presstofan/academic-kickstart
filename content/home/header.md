@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 </br>
-## Welcome to my blog, a place where I share my journey in learning, experimenting and practising the power of data science.
+# Welcome to my blog, a place where I share my journey in learning, experimenting and practising the power of data science.
 
 <!-- {{% alert note %}}
 This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [*Blank* widget](https://sourcethemes.com/academic/docs/widgets/).
