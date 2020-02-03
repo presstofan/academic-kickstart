@@ -18,7 +18,7 @@ organizations:
   url: "https://www.dectech.co.uk/#/home"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests predictive modelling, natural language processing and data visualisation.
 
 interests:
 - Statistical Modelling
