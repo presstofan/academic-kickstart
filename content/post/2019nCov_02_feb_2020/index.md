@@ -1,11 +1,11 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "新型冠状病毒（2019-nCov）感染数据分析日志 —— 北京 2月2日"
+title: "新冠肺炎北京市数据分析 —— 2月2日 Data Analysis of Novel Coronavirus Cases in Beijing - 2 Feb"
 subtitle: ""
 summary: ""
 authors: [Yihui Fan]
-tags: [2019-nCov]
+tags: [2019-nCov，新冠肺炎]
 categories: [中文博客]
 date: 2020-02-02T23:27:25Z
 lastmod: 2020-02-02T23:27:25Z
@@ -35,7 +35,7 @@ projects: []
 
 {{% /alert %}}
 
-新型肺炎疫情受到国内外重视已经有两周了， 北京市卫健委也从21日起开始发布疫情防控的实时数据。无需赘述，这篇日志主要是对北京市已发布的疫情数据进行简单的分析，并希望能从中获得一些潜在信息。
+新型肺炎疫情受到国内外重视已经有两周了，北京市卫健委也从21日起开始发布疫情防控的实时数据。无需赘述，这篇日志主要是对北京市已发布的疫情数据进行简单的分析，并希望能从中获得一些潜在信息。
 
 ## 数据说明
 
