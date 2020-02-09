@@ -3,7 +3,7 @@
 
 title: "新冠肺炎北京市数据分析 —— 2月2日 Data Analysis of Novel Coronavirus Cases in Beijing - 2 Feb"
 subtitle: ""
-summary: ""
+summary: "文章包括175例病例的特征分析和趋势分析，病例接触史以及各城区数据汇总分析。最后更新于2月3日 Last update on 3 Feb"
 authors: [Yihui Fan]
 tags: [2019-nCov, 新冠肺炎]
 categories: [中文博客]
@@ -88,7 +88,7 @@ projects: []
 
 ## 各区县情况
 
-最后，再来看看各区县的情况。截止到2月3日0时，各区县感染人数如下。病例人数前四位的是海淀，朝阳，大兴和西城。其中朝阳病例统计人数有所下降。这是因为根据国家有关规定，病例归属地原则按发病时的居住地确定。而之前北京市统计数据并不是按照这一标准，因此有小范围的出入，但不影响趋势统计。下图所示，目前大兴，西城病例增速较大。来京人员病例数量在春节期间停滞一段时间后再次出现快速增长，对应返工潮。东城，顺义，延庆，密云，怀柔，平谷，房山和石景山病例数量很低或为零感染，危险较小。
+最后，再来看看各区县的情况。截止到2月3日0时，各区县感染人数如下。病例人数前四位的是海淀，朝阳，大兴和西城。其中朝阳病例统计人数有所下降。这是因为根据国家有关规定，病例归属地原则按发病时的居住地确定。而之前北京市统计数据并不是按照这一标准，因此有小范围的出入，但不影响趋势统计。下图所示，目前大兴，西城病例增速较大。外来人员病例数量在春节期间停滞一段时间后再次出现快速增长，对应返工潮。东城，顺义，延庆，密云，怀柔，平谷，房山和石景山病例数量很低或为零感染，危险较小。
 
 <div>
     <a href="https://plot.ly/~presstofan/46/?share_key=hrzngcLxDqhDMPTO0EefxM" target="_blank" title="2019nCov_beijing_infection_by_district" style="display: block; text-align: center;"><img src="https://plot.ly/~presstofan/46.png?share_key=hrzngcLxDqhDMPTO0EefxM" alt="2019nCov_beijing_infection_by_district" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
@@ -104,7 +104,7 @@ projects: []
 * 由于病毒防控意识的增强，发病到初次就诊时间逐渐减短，有利于疫情控制
 * 疫情由输入期向传播期过渡，监测既没有密切接触史又没有外省市接触史的病例数量成为关键
 * 目前各区县中海淀，朝阳，大兴和西城病例较多，其中大兴和西城增速较大
-* 来京人员病例数量在春节期间停滞一段时间后再次出现快速增长，对应返工潮。
+* 外来人员病例数量在春节期间停滞一段时间后再次出现快速增长，对应返工潮。
 
 虽然相比较其他城市北京市卫健委的数据发布已经做的很不错，但是还有些不足。以下是我个人的一些建议：
 

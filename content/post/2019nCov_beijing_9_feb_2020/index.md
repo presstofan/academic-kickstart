@@ -3,7 +3,7 @@
 
 title: "新冠肺炎北京市数据分析 —— 2月9日 Data Analysis of Novel Coronavirus Cases in Beijing - 9 Feb"
 subtitle: ""
-summary: "最后更新于2月9日 Last update on 9 Feb"
+summary: "文章包括病例接触史，各城区数据汇总和趋势分析，以及已知病例活动地点的地图整理。最后更新于2月9日。Updated analysis on contact history of new cases, number of cases in each district and trend, and a map showing the where the new cases were found. Last update on 9 Feb."
 authors: [Yihui Fan]
 tags: [2019-nCov, 新冠肺炎]
 categories: [中文博客]
