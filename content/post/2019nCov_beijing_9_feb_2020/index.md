@@ -5,7 +5,7 @@ title: "新冠肺炎北京市数据分析 —— 2月9日 Data Analysis of Novel
 subtitle: ""
 summary: "最后更新于2月9日 Last update on 9 Feb"
 authors: [Yihui Fan]
-tags: [2019-nCov，新冠肺炎]
+tags: [2019-nCov, 新冠肺炎]
 categories: [中文博客]
 date: 2020-02-09T12:05:29Z
 lastmod: 2020-02-09T12:05:29Z

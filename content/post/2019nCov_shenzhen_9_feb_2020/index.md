@@ -5,7 +5,7 @@ title: "新冠肺炎深圳市数据分析 —— 2月9日 Data Analysis of Novel
 subtitle: ""
 summary: ""
 authors: [Yihui Fan]
-tags: [2019-nCov，新冠肺炎]
+tags: [2019-nCov, 新冠肺炎]
 categories: [中文博客]
 date: 2020-02-08T17:33:09Z
 lastmod: 2020-02-08T17:33:09Z
