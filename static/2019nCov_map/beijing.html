@@ -1,0 +1,228 @@
+<html>
+  <head>
+                <meta charset='utf-8'>
+                <style type='text/css'>
+                body {
+                margin: 0;
+                }
+                #main {
+                height: 100%;
+                }
+                </style>
+                </head>
+                <body>
+                <div id='main'></div>
+                <script src='./js/echarts.js'></script>
+                <script type='text/javascript' src='https://api.map.baidu.com/api?v=2.0&ak=q9U1lWgCK1aBGVC1DVWrgWa7&s=1'></script>
+                <script src='./js/jquery.min.js'></script>
+                <script>
+
+                (function () {
+                require.config({
+                paths: {
+                echarts:'./js'
+                },
+                packages: [
+                {
+                name: 'BMap',
+                location: './js',
+                main: 'main'
+                }
+                ]
+                });
+
+                require(
+                [
+                'echarts',
+                'BMap',
+                'echarts/chart/map'
+                ],
+                function (echarts, BMapExtension) {
+
+                var BMapExt = new BMapExtension($('#main')[0], BMap, echarts,{
+                enableMapClick: false
+                });
+                var map = BMapExt.getMap();
+                var container = BMapExt.getEchartsContainer();
+
+                var startPoint = {
+                x: 116.403963,
+                y: 39.915119
+                };
+                var point = new BMap.Point(startPoint.x, startPoint.y);
+                map.centerAndZoom(point, 12);
+                map.enableScrollWheelZoom(true);
+                map.setMapStyle({style:'dark'});
+
+
+optionID_20200209115511_240331 = {
+  color: ['gold','aqua','lime'],
+  title : {
+    text: '北京肺炎病例已知地点(小区) Known places of Coronavirus cases in Beijing',
+    subtext: '最后更新:2020年2月8日 信息来源:北京市疾病预防控制中心 Last Update: 8 Feb 2020 Source: Beijing CDPC',
+    x:'center',
+    textStyle : {
+      color: 'white'
+    }
+  },
+  tooltip : {
+    show: true,
+    trigger: 'item',
+    formatter: function (v) {
+               if(v[2].tooltipValue!=null){
+               return v[2].tooltipValue;
+               }else{
+               return v[1];
+               }
+  }},
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  series : [
+    {
+      type:'map',
+      mapType: 'none',
+      data:[]
+      
+      ,markPoint : {
+        symbol:'emptyCircle',
+      symbolSize :12,
+      effect : {
+        show: true,
+        type: 'scale',
+        shadowBlur : 0
+      },
+      itemStyle:{
+      normal:{
+        label:{show:false},
+        color:'red'
+      },
+      emphasis: {
+        label:{show:false}
+      }
+      },
+      data : [{name:'北京市东城区体育馆路街道驹章胡同',value: 28,symbol:'circle'},
+{name:'北京市西城区月坛街道复兴门外大街甲20号',value: 68,symbol:'circle'},
+{name:'北京市西城区展览路街道南营房社区',value: 29,symbol:'circle'},
+{name:'北京市朝阳区来广营乡筑华年',value: 94,symbol:'circle'},
+{name:'北京市朝阳区东坝乡恒大江湾',value:  8,symbol:'circle'},
+{name:'北京市朝阳区慈云寺北里',value: 38,symbol:'circle'},
+{name:'北京市朝阳区北苑路86号嘉铭园',value: 90,symbol:'circle'},
+{name:'北京市朝阳区高碑店乡陶家湾',value: 99,symbol:'circle'},
+{name:'北京市海淀区北太平庄街道新街口外大街15号院',value: 42,symbol:'circle'},
+{name:'北京市海淀区紫竹院街道民族大学西路66号鑫德嘉园',value: 60,symbol:'circle'},
+{name:'北京市石景山区玉泉北里2区',value: 58,symbol:'circle'},
+{name:'北京市石景山区八宝山街道远洋山水',value: 63,symbol:'circle'},
+{name:'北京市石景山区五里坨街道西街天翠阳光新城',value: 78,symbol:'circle'},
+{name:'北京市大兴区黄村镇格林云墅',value: 52,symbol:'circle'},
+{name:'北京市大兴区瀛海镇金茂悦北区5号院',value: 62,symbol:'circle'},
+{name:'北京市大兴区观音寺街道双河南里',value: 31,symbol:'circle'},
+{name:'北京市怀柔区庙城镇郑重庄村',value: 31,symbol:'circle'},
+{name:'北京市西城区新街口街道富国里',value: 38,symbol:'circle'},
+{name:'北京市西城区月坛街道复兴门外大街甲20号',value: 25,symbol:'circle'},
+{name:'北京市朝阳区奥运村街道林萃路10号院',value: 58,symbol:'circle'},
+{name:'北京市朝阳区来广营乡明天第一城',value: 43,symbol:'circle'},
+{name:'北京市朝阳区亚运村街道安慧北里',value: 18,symbol:'circle'},
+{name:'北京市丰台区丰台街道电报局街小区',value: 15,symbol:'circle'},
+{name:'北京市丰台区卢沟桥街道西府颐园',value: 54,symbol:'circle'},
+{name:'北京市昌平区龙泽园街道龙泽苑东区',value: 96,symbol:'circle'},
+{name:'北京市昌平区天通苑北街道天通苑北一区',value: 72,symbol:'circle'},
+{name:'北京市通州区于家务回族乡崔各庄村',value: 39,symbol:'circle'},
+{name:'北京市房山区西潞街道西潞东里小区',value: 51,symbol:'circle'},
+{name:'北京市大兴区林校路街道泰禾中央广场',value: 81,symbol:'circle'},
+{name:'北京市大兴区兴丰街道瑞康家园小区',value: 89,symbol:'circle'},
+{name:'北京市顺义区空港街道龙湖滟澜山',value: 42,symbol:'circle'},
+{name:'北京市东城区北新桥街道后永康2巷',value: 72,symbol:'circle'},
+{name:'北京市朝阳区高碑店北花园社区超级蜂巢　',value:  2,symbol:'circle'},
+{name:'北京市朝阳区将台乡芳园里小区　　',value: 20,symbol:'circle'},
+{name:'北京市海淀区田村路街道玉海园二里小区',value: 98,symbol:'circle'},
+{name:'北京市丰台区丰台街道建国街一里',value: 19,symbol:'circle'},
+{name:'北京市丰台区东铁营街道定安东里　',value: 54,symbol:'circle'},
+{name:'北京市丰台区太平桥街道华源四里',value: 18,symbol:'circle'},
+{name:'北京市丰台区新村街道富丰园',value: 82,symbol:'circle'},
+{name:'北京市房山区张坊镇西白岱村',value: 72,symbol:'circle'},
+{name:'北京市密云区十里堡镇河槽村',value: 25,symbol:'circle'},
+{name:'北京市东城区北新桥街道东直门北小街8号',value: 44,symbol:'circle'},
+{name:'北京市朝阳区南磨房乡世纪东方嘉园',value: 66,symbol:'circle'},
+{name:'北京市海淀区北太平庄街道北京师范大学小区',value: 45,symbol:'circle'},
+{name:'北京市海淀区中关村街道中科院东南小区',value: 98,symbol:'circle'},
+{name:'北京市丰台区东高地街道万源南里小区',value:100,symbol:'circle'},
+{name:'北京市顺义区胜利街道义宾南区',value: 51,symbol:'circle'},
+{name:'北京市大兴区西红门镇瑞海家园二区',value: 76,symbol:'circle'}
+      ]},
+      geoCoord:{'北京市东城区体育馆路街道驹章胡同': [116.4315,39.89637],
+'北京市西城区月坛街道复兴门外大街甲20号': [116.3465,39.91166],
+'北京市西城区展览路街道南营房社区': [116.3568,39.92574],
+'北京市朝阳区来广营乡筑华年': [116.4343,40.04218],
+'北京市朝阳区东坝乡恒大江湾': [116.5383,39.97609],
+'北京市朝阳区慈云寺北里': [116.5018,39.92394],
+'北京市朝阳区北苑路86号嘉铭园': [116.4357,40.00653],
+'北京市朝阳区高碑店乡陶家湾': [116.5490,39.91136],
+'北京市海淀区北太平庄街道新街口外大街15号院': [116.3764,39.96943],
+'北京市海淀区紫竹院街道民族大学西路66号鑫德嘉园': [116.3240,39.95502],
+'北京市石景山区玉泉北里2区': [116.2554,39.92545],
+'北京市石景山区八宝山街道远洋山水': [116.2470,39.90468],
+'北京市石景山区五里坨街道西街天翠阳光新城': [116.1284,39.96020],
+'北京市大兴区黄村镇格林云墅': [116.4077,39.71437],
+'北京市大兴区瀛海镇金茂悦北区5号院': [116.4907,39.76044],
+'北京市大兴区观音寺街道双河南里': [116.3560,39.73984],
+'北京市怀柔区庙城镇郑重庄村': [116.6242,40.29237],
+'北京市西城区新街口街道富国里': [116.3721,39.93585],
+'北京市西城区月坛街道复兴门外大街甲20号': [116.3465,39.91166],
+'北京市朝阳区奥运村街道林萃路10号院': [116.3807,40.01658],
+'北京市朝阳区来广营乡明天第一城': [116.4147,40.05333],
+'北京市朝阳区亚运村街道安慧北里': [116.4207,40.00205],
+'北京市丰台区丰台街道电报局街小区': [116.2958,39.85680],
+'北京市丰台区卢沟桥街道西府颐园': [116.2745,39.88845],
+'北京市昌平区龙泽园街道龙泽苑东区': [116.3342,40.07899],
+'北京市昌平区天通苑北街道天通苑北一区': [116.4239,40.08432],
+'北京市通州区于家务回族乡崔各庄村': [116.7232,39.69871],
+'北京市房山区西潞街道西潞东里小区': [116.1421,39.73830],
+'北京市大兴区林校路街道泰禾中央广场': [116.3275,39.72153],
+'北京市大兴区兴丰街道瑞康家园小区': [116.3488,39.74485],
+'北京市顺义区空港街道龙湖滟澜山': [116.5078,40.09796],
+'北京市东城区北新桥街道后永康2巷': [116.4293,39.95085],
+'北京市朝阳区高碑店北花园社区超级蜂巢　': [116.5546,39.90487],
+'北京市朝阳区将台乡芳园里小区　　': [116.4909,39.97819],
+'北京市海淀区田村路街道玉海园二里小区': [116.2607,39.92606],
+'北京市丰台区丰台街道建国街一里': [116.3003,39.85422],
+'北京市丰台区东铁营街道定安东里　': [116.4214,39.86399],
+'北京市丰台区太平桥街道华源四里': [116.3248,39.88781],
+'北京市丰台区新村街道富丰园': [116.2892,39.84356],
+'北京市房山区张坊镇西白岱村': [115.7428,39.57528],
+'北京市密云区十里堡镇河槽村': [116.7843,40.35024],
+'北京市东城区北新桥街道东直门北小街8号': [116.4322,39.95433],
+'北京市朝阳区南磨房乡世纪东方嘉园': [116.5005,39.88351],
+'北京市海淀区北太平庄街道北京师范大学小区': [116.3721,39.96735],
+'北京市海淀区中关村街道中科院东南小区': [116.3427,39.98655],
+'北京市丰台区东高地街道万源南里小区': [116.4322,39.80344],
+'北京市顺义区胜利街道义宾南区': [116.6550,40.13779],
+'北京市大兴区西红门镇瑞海家园二区': [116.3383,39.79220]
+                  }
+                  
+
+    },
+    ]
+};
+
+
+var myChart = BMapExt.initECharts(container);
+window.onresize = myChart.onresize;
+BMapExt.setOption(optionID_20200209115511_240331);
+                }
+                );
+                })();
+</script>
+  </body>
+  </html>
+
+  
