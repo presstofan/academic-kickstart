@@ -65,7 +65,7 @@ This is the second data analysis post of the novel coronavirus cases in Beijing.
 
 New cases in Beijing has become more likely to be infected in the city, rather than bringing in the virus from Hubei or other cities. Most of the new cases in 7 and 8 of February did not have travel history in other cities and they tend to be close contacts of the previously infected cases. However, there has been an increasing number of cases who have neither known contact nor travel history (blue bars in the chart). This suggests they may have been infected in public places in Beijing. Tracking down their activities is vital to prevent further outbreaks of the disease. The holiday season has come to the end. But there is no substantial increase of cases in people who have travel history (i.e. imported cases), suggesting that prolonging the holiday and placing travel control helped to contain the disease.
 
-## 各区县情况 (Cases by District)
+## 各城区情况 (Cases by District)
 
 <div>
     <a href="https://plot.ly/~presstofan/56/?share_key=CCK191wuxzNlSDm8vd7bdP" target="_blank" title="2019nCov_beijing_infection_by_district_8feb" style="display: block; text-align: center;"><img src="https://plot.ly/~presstofan/56.png?share_key=CCK191wuxzNlSDm8vd7bdP" alt="2019nCov_beijing_infection_by_district_8feb" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
