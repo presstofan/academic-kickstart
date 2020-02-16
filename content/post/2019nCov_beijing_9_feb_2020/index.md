@@ -1,11 +1,11 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "新冠肺炎北京市数据分析 —— 2月9日 Data Analysis of Novel Coronavirus Cases in Beijing - 9 Feb"
+title: "新冠肺炎北京市数据分析 —— 2月9日 Data Analysis of COVID-19 (Coronavirus) Cases in Beijing - 9 Feb"
 subtitle: ""
 summary: "文章包括病例接触史，各城区数据汇总和趋势分析，以及已知病例活动地点的地图整理。最后更新于2月9日。Updated analysis on contact history of new cases, number of cases in each district and trend, and a map showing the where the new cases were found. Last update on 9 Feb."
 authors: [Yihui Fan]
-tags: [2019-nCov, 新冠肺炎]
+tags: [COVID-19, 新冠肺炎]
 categories: [中文博客]
 date: 2020-02-09T12:05:29Z
 lastmod: 2020-02-09T12:05:29Z
@@ -30,7 +30,7 @@ projects: []
 
 ## 太长不看版 (TL;DR)
 
-截止到2月8日24时，北京市新冠肺炎病例呈一下特点：
+截止到2月8日24时，北京市新冠肺炎病例呈以下特点：
 
 * 疫情持续由输入期向传播期过渡，目前绝大多数新增病例为已有病例的密切接触者；家庭成员之间的防护措施不可忽略
 * 目前有个别病例并无接触史，可能在市内公共场所被传染；理清这些病例的外出接触史十分重要
@@ -86,6 +86,6 @@ The map below is constructed using data from Beijing Center for Diseases Prevent
 
 ## 数据说明 (About the Data)
 
-病例接触史及各区县疫情数据来自于北京市卫健委-新型冠状病毒感染的肺炎疫情防控专栏的[疫情通报](http://wjw.beijing.gov.cn/wjwh/ztzl/xxgzbd/gzbdyqtb/index_1.html)单元。已知病例曾经活动过的小区和场所来自北京市疾病预防控制中心的新型冠状病毒防控[疫情防控](http://www.bjcdc.org/ColumnAction.do?dispatch=getEjPage&id=4473&cID=4493)单元。两个数据源的数据主要是文字介绍和图片化的表格，经我录入整理后分析。整理好的数据我以上传到[Github](https://github.com/presstofan/2019-nCov-data-collection)。我将会持续更细。欢迎下载使用，但请遵守[知识共享许可协议](https://creativecommons.org/licenses/by/4.0/)。地图可视化由百度地图提供，并感谢Lchiffon制作的[REmap R library](https://github.com/Lchiffon/REmap)。
+病例接触史及各区县疫情数据来自于北京市卫健委-新型冠状病毒感染的肺炎疫情防控专栏的[疫情通报](http://wjw.beijing.gov.cn/wjwh/ztzl/xxgzbd/gzbdyqtb/index_1.html)单元。已知病例曾经活动过的小区和场所来自北京市疾病预防控制中心的新型冠状病毒防控[疫情防控](http://www.bjcdc.org/ColumnAction.do?dispatch=getEjPage&id=4473&cID=4493)单元。两个数据源的数据主要是文字介绍和图片化的表格，经我录入整理后分析。整理好的数据我已经上传到[Github](https://github.com/presstofan/2019-nCov-data-collection)。我将会持续更新。欢迎下载使用（[知识共享许可协议](https://creativecommons.org/licenses/by/4.0/)）。地图可视化由百度地图提供，并感谢Lchiffon制作的[REmap R library](https://github.com/Lchiffon/REmap)。
 
 Data for contact history of the novel Coronavirus cases and number of cases in each districts was gathered from [Beijing Municipal Health Commission](http://wjw.beijing.gov.cn/wjwh/ztzl/xxgzbd/gzbdyqtb/). Known places of the cases were gathered from [Beijing Center for Diseases Prevention and Control](http://www.bjcdc.org/ColumnAction.do?dispatch=getEjPage&id=4473&cID=4493). The data is mainly in the form of text or image. I have manually (or with the help of scripts) collected them into databases, which I have published in [this GitHub repo](https://github.com/presstofan/2019-nCov-data-collection). Please feel free to use it under the [Creative Common License](https://creativecommons.org/licenses/by/4.0/). Special thanks to Lchiffon, the author of [REmap](https://github.com/Lchiffon/REmap), which utilises Baidu Map to make the visualisation possible.

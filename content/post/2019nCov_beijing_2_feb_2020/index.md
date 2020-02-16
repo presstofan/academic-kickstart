@@ -1,11 +1,11 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "新冠肺炎北京市数据分析 —— 2月2日 Data Analysis of Novel Coronavirus Cases in Beijing - 2 Feb"
+title: "新冠肺炎北京市数据分析 —— 2月2日 Data Analysis of COVID-19 (Coronavirus) Cases in Beijing - 2 Feb"
 subtitle: ""
 summary: "文章包括175例病例的特征分析和趋势分析，病例接触史以及各城区数据汇总分析。最后更新于2月3日 Last update on 3 Feb"
 authors: [Yihui Fan]
-tags: [2019-nCov, 新冠肺炎]
+tags: [COVID-19, 新冠肺炎]
 categories: [中文博客]
 date: 2020-02-02T23:27:25Z
 lastmod: 2020-02-02T23:27:25Z
