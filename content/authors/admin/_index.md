@@ -1,6 +1,6 @@
 ---
 # Display name
-name: Yihui Fan
+name: databentobox
 
 # Username (this should match the folder name)
 authors:
@@ -14,8 +14,8 @@ role: Data Scientist
 
 # Organizations/Affiliations
 organizations:
-- name: Decision Technology
-  url: "https://www.dectech.co.uk/#/home"
+- name:
+  url:
 
 # Short bio (displayed in user profile at end of posts)
 bio: My research interests predictive modelling, natural language processing and data visualisation.

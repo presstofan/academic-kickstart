@@ -4,7 +4,7 @@
 title: "Cache time-consuming computations in R"
 subtitle: ""
 summary: "Quick demonstration of caching time-consuming computations in R"
-authors: [Yihui Fan]
+authors: [databentobox]
 tags: [R, caching]
 categories: [Data Science]
 date: 2016-08-07T17:30:42Z

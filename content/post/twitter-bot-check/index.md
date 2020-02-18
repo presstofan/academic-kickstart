@@ -4,7 +4,7 @@
 title: "Are my Twitter followers bots"
 subtitle: ""
 summary: "A Python script that checks twitter bots with Botometer API"
-authors: [Yihui Fan]
+authors: [databentobox]
 tags: [Python, Social Media, MongoDB]
 categories: [Data Science]
 date: 2016-07-18T16:37:14Z

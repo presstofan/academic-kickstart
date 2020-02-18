@@ -4,7 +4,7 @@
 title: "Dplyr functions with string"
 subtitle: ""
 summary: "A trick to use string as arguments in dplyr functions"
-authors: [Yihui Fan]
+authors: [databentobox]
 tags: [R, dplyr]
 categories: [Data Science]
 date: 2019-11-01T14:30:17Z
