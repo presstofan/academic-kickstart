@@ -6,7 +6,7 @@ subtitle: ""
 summary: "文章包括病例分析，各城区数据汇总和趋势分析，以及已知病例活动地点的地图整理。最后更新于2月16日。Updated analysis on diagnosed cases, number of cases in each district and COVID-19 map. Last updated on 16 Feb."
 authors: [databentobox]
 tags: [COVID-19, 新冠肺炎]
-categories: [中文博客]
+categories: [COVID-19]
 date: 2020-02-16T17:33:09Z
 lastmod: 2020-16-08T17:33:09Z
 featured: false

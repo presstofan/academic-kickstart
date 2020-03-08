@@ -6,7 +6,7 @@ subtitle: ""
 summary: "文章包括175例病例的特征分析和趋势分析，病例接触史以及各城区数据汇总分析。最后更新于2月3日 Last update on 3 Feb"
 authors: [databentobox]
 tags: [COVID-19, 新冠肺炎]
-categories: [中文博客]
+categories: [COVID-19]
 date: 2020-02-02T23:27:25Z
 lastmod: 2020-02-02T23:27:25Z
 featured: false

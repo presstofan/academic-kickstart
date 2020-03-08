@@ -6,7 +6,7 @@ subtitle: ""
 summary: "A trick to use string as arguments in dplyr functions"
 authors: [databentobox]
 tags: [R, dplyr]
-categories: [Data Science]
+categories: [R]
 date: 2019-11-01T14:30:17Z
 lastmod: 2019-11-01T14:30:17Z
 featured: false

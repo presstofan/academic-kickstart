@@ -6,7 +6,7 @@ subtitle: ""
 summary: "A Python script that checks twitter bots with Botometer API"
 authors: [databentobox]
 tags: [Python, Social Media, MongoDB]
-categories: [Data Science]
+categories: [Social Network]
 date: 2016-07-18T16:37:14Z
 lastmod: 2016-07-18T16:37:14Z
 featured: true

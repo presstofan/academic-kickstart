@@ -6,7 +6,7 @@ subtitle: ""
 summary: "Quick demonstration of caching time-consuming computations in R"
 authors: [databentobox]
 tags: [R, caching]
-categories: [Data Science]
+categories: [R]
 date: 2016-08-07T17:30:42Z
 lastmod: 2019-11-01T12:37:16Z
 featured: false

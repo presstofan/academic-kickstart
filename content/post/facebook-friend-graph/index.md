@@ -6,7 +6,7 @@ subtitle: ""
 summary: "A guide to analysing social network with Python"
 authors: [databentobox]
 tags: [Python, Social Network, Network Analysis]
-categories: [Data Science]
+categories: [Social Network]
 date: 2019-07-28T13:30:00Z
 lastmod: 2019-11-01T16:47:45Z
 featured: true

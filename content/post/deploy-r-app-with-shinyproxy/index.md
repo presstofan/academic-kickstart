@@ -6,10 +6,10 @@ subtitle: ""
 summary: "This post provides a guide to use ShinyProxy, an open-source tool with enterprise features, to deploy R Shiny apps."
 authors: [databentobox]
 tags: [R, R Shiny, ShinyProxy]
-categories: [Data Science]
+categories: [R Shiny]
 date: 2019-11-05T18:12:43Z
 lastmod: 2019-11-05T18:12:43Z
-featured: true
+featured: false
 draft: false
 
 # Featured image

@@ -6,7 +6,7 @@ subtitle: ""
 summary: "A quick demonstration of adding customised shapes to bar charts in Plotly with R."
 authors: [databentobox]
 tags: [R, Plotly]
-categories: [Data Visualisation]
+categories: [R]
 date: 2019-11-24T14:33:21Z
 lastmod: 2019-11-24T14:33:21Z
 featured: false
