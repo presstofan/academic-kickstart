@@ -32,7 +32,11 @@ In dealing with the outbreak of the coronavirus, China has slapped extraordinary
 
 In this post, I will try to answer these questions by running a couple of simulations based on real-world data. I will use the simple SIR model as a starting point, together with the population density and traffic flow data to simulate a potential outbreak of coronavirus in an urban area. In theory, the outbreak can happen in any city in the world but population and transportation data is not always available. For this post, I will pick Tokyo as an example. It is a megacity with an extensive network of railways, subways and highways and I was also able to get granular transportation and population density data for the area covered in the simulations.
 
-**This is by no means an accurate epidemic model and the simulations are not predictions of if and how the outbreak will happen as they rely on strong assumptions (see the Assumptions section below for details).**. As such, the simulations are used as a tool for understanding the relationship between movement and the spread of an infectious disease. In the next section of the post, I will show the simulations. The model, data and assumptions the simulations are based upon can be found in the later sections.
+{{% alert warning  %}}
+**Disclaimer**: I am not an epidemiologist and this is by no means an accurate model. The simulations are for data science and visualisation discussions only and are not predictions of if and how the outbreak will happen as they rely on strong assumptions (see the Assumptions section below for details). As such, the simulations are used as a tool for understanding the relationship between movement and the spread of an infectious disease.
+{{% /alert %}}
+
+In the next section of the post, I will show the simulations. The model, data and assumptions the simulations are based upon can be found in the later sections.
 
 ## Simulations
 
