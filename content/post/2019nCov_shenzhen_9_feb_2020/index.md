@@ -37,8 +37,7 @@ projects: []
 * 人们的防范意识逐渐提高，发病到入院时间逐渐降低，有利于疫情的防控
 * 输入性病例及其密切基础者仍占确诊病例的主体；市内公共空间传播的风险较小
 * 南山，福田，龙岗和宝安病例较多，但增长速度放缓
-* 年龄较大的患者康复所需时间更长
-* 发病后及时入院对防止疫情的扩散有很大作用，但并没有减少康复所需时间
+* （2月25日更新）年龄较大的患者康复所需时间更长; 80岁患者在25天内治愈出院的概率只有20岁患者的一半
 
 深圳市官方持续发布新增病例活动的场所和小区，我已经将数据做成<a href="/2019ncov_map/shenzhen.html">在线地图</a>，并将持续更新。祝大家一切安好！
 
@@ -49,8 +48,7 @@ The following patterns have been observed for COVID-19 cases in Shenzhen:
 * The time between the onset of symptoms and admission has been reducing, thanks to the increasing awareness of the disease and effort in prevention and control
 * Most of the cases found in Shenzhen are people who have travel history in Hubei or other provinces or/and contact history of other infected cases; the risk of being infected in public places in Shenzhen remains low
 * Nanshan, Futian, Longgang and Baoan have the most number of cases. However, the growth rate has been dropping
-* Older patients take longer time to recover
-* Early hospitalisation is crucial for preventing the virus from spreading but it does not seem to reduce the time needed for recovery
+* (Updated on 25 Feb) Older patients take longer time to recover; the chance of recovery within 25 days for a 80-year-old patient is only half of that of a 20-year-old
 
 Shenzhen government has been publishing places where the new cases were found. I have gathered the data and made a <a href="/2019ncov_map/shenzhen.html">map</a>. This will be updated daily. Hope you all stay safe and healthy!
 
@@ -109,26 +107,25 @@ Unlike Beijing, Shenzhen COVID-19 cases tend to be people with travel history in
 
 ## 康复时间 (Recovery Time)
 
-截止到2月16日，共有131位病人顺利出院。已出院的病人住院时间的中位数为15天。通过Cox Proportional Hazards模型建模分析发现以下关系：
+{{% alert info  %}}
+康复时间分析模型在2月25日更新。深圳市政府在26日停止发布病例出院的详细信息。
 
-1. 年龄较大的患者住院时间较长。一名20岁的患者在25天内康复的概率为97%。而80岁患者在25天内康复的概率只有45%。
-2. 发病到入院时间越长，住院时间越短。入院前12天就已出现症状的病人在入院25天内康复的概率有92%，而发病当天就入院的病人在入院25天内康复的概率只有71%。这一定程度上说明病人康复需要一定时间。及时入院并不能减少康复所需时间（入院隔离对防止疫情的扩散有着很重要的作用）。
-3. 利用病人康复出院数据建立模型可以更好的预测疫情对医疗资源的消耗情况。随着出院人数的增多，这一模型将更加精确。
+Recovery Time model was last updated on 25 Feb. Shenzhen government had stopped published detail information on discharged patients from 26 Feb.
+{{% /alert %}}
 
-131 COVID-19 patients have been discharged from hospitals by 16 Feb. The median number of days they spent in hospital is 15. Using Cox Proportional Hazards model, I was able to recover the following patterns:
+截止到2月25日，共有262位病人顺利出院（样本共417例）。已出院的病人住院时间的中位数为17天。通过Cox Proportional Hazards模型建模分析发现以下关系：
 
-1. Older patients need longer time to recover. A 20-year-old patient has a 97% chance of recovering within 25 days while an 80-year-old patient only has 45% of chance.
-2. The longer the time between the first symptoms and admission, the shorter it takes to recover. This is strange at first glance but it could just mean that being hospitalised does not necessarily reduce the time need for recovery. However, isolating the patients is still crucial to prevent the virus from spreading and lower fatality rate.
-3. Building models using the existing data is useful to predict the demand for medical resources. The accuracy of this model will improve as more patients being discharged.
+1. 年龄较大的患者住院时间较长。一名20岁的患者在25天内康复的概率为86%。而80岁患者在25天内康复的概率只有42%。
+2. 利用病人康复出院数据建立模型可以更好的预测疫情对医疗资源的消耗情况。随着出院人数的增多，这一模型将更加精确。
+
+262 COVID-19 patients have been discharged from hospitals by 25 Feb (out of the total 417 cases in the sample). The median number of days they spent in hospital is 17. Using Cox Proportional Hazards model, I was able to recover the following patterns:
+
+1. Older patients need longer time to recover. A 20-year-old patient has a 86% chance of recovering within 25 days while an 80-year-old patient only has 42% of chance.
+2. Building models using the existing data is useful to predict the demand for medical resources. The accuracy of this model will improve as more patients being discharged.
 
 <div>
     <a href="https://plot.ly/~presstofan/70/?share_key=oewCDeWGDsWjFA3JCqppXE" target="_blank" title="2019nCov_shenzhen_Discharge_Prob_by_Age_Curve" style="display: block; text-align: center;"><img src="https://plot.ly/~presstofan/70.png?share_key=oewCDeWGDsWjFA3JCqppXE" alt="2019nCov_shenzhen_Discharge_Prob_by_Age_Curve" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
     <script data-plotly="presstofan:70" sharekey-plotly="oewCDeWGDsWjFA3JCqppXE" src="https://plot.ly/embed.js" async></script>
-</div>
-
-<div>
-    <a href="https://plot.ly/~presstofan/68/?share_key=zOn6ObX8wkluXse9fSa5Bv" target="_blank" title="2019nCov_shenzhen_Discharge_Prob_by_Spread_Time_Curve" style="display: block; text-align: center;"><img src="https://plot.ly/~presstofan/68.png?share_key=zOn6ObX8wkluXse9fSa5Bv" alt="2019nCov_shenzhen_Discharge_Prob_by_Spread_Time_Curve" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="presstofan:68" sharekey-plotly="zOn6ObX8wkluXse9fSa5Bv" src="https://plot.ly/embed.js" async></script>
 </div>
 
 ## 各城区情况 (Cases by District)
