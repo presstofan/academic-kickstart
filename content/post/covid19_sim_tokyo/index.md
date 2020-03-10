@@ -151,4 +151,4 @@ We also need to know the population in each of the simulated locations. This kin
 
 Combining these two datasets we have something below. The heatmap shows the population density while the lines are OD flows.
 
-![Tokyo OD Flow and Population](tokyo_od_pop.png)
+![Tokyo OD Flow and Population](tokyo_od_pop_map.png)
