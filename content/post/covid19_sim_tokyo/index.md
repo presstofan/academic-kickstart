@@ -49,13 +49,13 @@ We will focus on the central Tokyo area for all the simulations. This is one of 
     <script data-plotly="presstofan:72" sharekey-plotly="e7qt5lhRiSLZ9GoeaSzJhd" src="https://plot.ly/embed.js" async></script>
 </div>
 
-Below is a time-lapse visualisation of the outbreak. It starts from Shinjuku, then travels west and south-west before spreading to the central and east part of the city. This pattern is likely due to the population density and traffic flow of Tokyo.
+Below is a time-lapse visualisation of the outbreak. It starts from Shinjuku, then travels west and south-west before spreading to the central and east part of the city. This pattern is likely due to the population density and traffic flow of Tokyo. (Sorry that I have to take down the good quality GIFs and replaced them with YouTube video but I can't afford the bandwidth!)
 
-![Simulation All Traffic](sim_all.gif)
+{{< youtube s__TdmLymRM >}}
 
 This pattern can be seen more clearly when we show it at the 10-day interval. I have also labelled the districts for context.
 
-![Simulation All Traffic 20S](sim_all_20.gif)
+{{< youtube sSlqCKA8tfc >}}
 
 ### Scenario 2: Schools cancelled
 
@@ -68,7 +68,7 @@ Let's see what will happen if the schools are cancelled. According to the OD Flo
 
 The spread pattern is similar to what we have seen before. This is not surprising given that we would expect the disease can still be spread to other places by other people.
 
-![Simulation School Cancelled](sim_no_school.gif)
+{{< youtube zj7dlF3cAWg >}}
 
 ### Scenario 3: People working from home and school cancelled
 
@@ -81,7 +81,7 @@ Finally, we will simulate the scenario where people are also advised to work fro
 
 Because the outbreak has been "stretched" longer, we can see the west-to-east pattern more clearly, with the infection moving from one district to another, rather than affecting all the districts at the same time (as we have seen in Scenario 1 and 2).
 
-![Simulation School Cancelled and Work From Home](sim_no_school_work.gif)
+{{< youtube 9r1quDno3WM >}}
 
 ### What do the simulations tell us
 
