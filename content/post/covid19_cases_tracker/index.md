@@ -1,9 +1,9 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Covid19 Cases Tracker"
+title: "COVID-19 Cases Tracker"
 subtitle: "A placeholder"
-summary: "Last Update: 16 Mar 2020"
+summary: ""
 authors: [databentobox]
 tags: [COVID-19, 新冠肺炎]
 categories: [COVID-19]
