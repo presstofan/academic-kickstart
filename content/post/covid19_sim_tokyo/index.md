@@ -108,13 +108,13 @@ $$R_{0} = \frac{\beta }{\gamma }$$
 
 $R_{0}$ is defined as the number of secondary infections caused by a single primary infection; in other words, it determines the number of people infected by contact with a single infected person before his/her death or recovery.
 
-Now we have the basic model of the spreading of the infectious disease. But how can we link this to the transportation system of a city? For this, Urban Data Scientist [Gevorg Yeghikyan](https://lexparsimon.github.io/coronavirus/) found a good solution based on a [Nature article](https://www.nature.com/articles/s41467-017-02064-4). The modified model can be summarised by the following equation:
+Now we have the basic model of the spreading of the infectious disease. But how can we link this to the transportation system of a city? For this, Urban Data Scientist [Gevorg Yeghikyan](https://lexparsimon.github.io/coronavirus/) found a good solution based on a [Nature article](https://www.nature.com/articles/s41467-017-02064-4). The hazard of introducing an infectious disease to a new location can be expressed below:
 
 $$
-p(t,j)=\frac{\beta_{t}S\_{j,t}(1-\exp(-\sum\_{k}m^{\_{j,k}^{t}}x\_{k,t}y\_{j,t}))}{1+\beta\_{t}y\_{j,t}},
+h(t,j)=\frac{\beta_{t}S\_{j,t}(1-\exp(-\sum\_{k}m^{\_{j,k}^{t}}x\_{k,t}y\_{j,t}))}{1+\beta\_{t}S\_{j,t}},
 $$
 
-where $\beta_{t}$ is the S-I transition rate at time $t$, $m^{\_{j,k}^{t}}$ is the probability of people moving from location $k$ to location $j$ at time $t$, $x\_{k,t}$ and $y\_{j,t}$ denote the proportion of infected and susceptible population at location $k$ and $j$ at time $t$, which can be expressed as below:
+where $\beta_{t}$ is the S-I transition rate at time $t$, $m^{\_{j,k}^{t}}$ reflects mobility from location $k$ to location $j$ at time $t$; $x\_{k,t}$ and $y\_{j,t}$ denote the proportion of infected and susceptible population at location $k$ and $j$ at time $t$, which can be expressed as below:
 
 $$x\_{k,t}=\frac{I\_{k,t}}{N\_{k}}$$
 $$y\_{j,t}=\frac{S\_{j,t}}{N\_{j}},$$
