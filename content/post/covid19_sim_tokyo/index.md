@@ -127,7 +127,7 @@ $$I\_{j,t+1}=I\_{j,t}+\frac{\beta\_{j,t}S\_{j,t}I\_{j,t}}{N\_{j}}+\frac{S\_{j,t}
 
 $$R\_{j,t+1}=R\_{j,t}+\gamma I\_{j,t}$$
 
-This just means that at a given time and a given location, the number of infected cases consist of people who are infected within the location ($\frac{\beta\_{j,t}S\_{j,t}I\_{j,t}}{N\_{j}}$) and those who arrive from other locations ($\frac{S\_{j,t}\sum\_km\_{j,k}^tx\_{k,t}\beta\_{k,t}}{N\_{j}+\sum\_km\_{j,k}^t}$), which is calculated accounting for the flow of population. From here, the simulations can be built using simple matrix calculation and loops. We are essentially creating a combination of two markov processes, one is the process from susceptible to infected to recovered and the other is the process of disease spreading from one location to another. The simulations run through the markov chain iteratively.
+This just means that at a given time and a given location, the number of infected cases consist of people who are infected within the location ($\frac{\beta\_{j,t}S\_{j,t}I\_{j,t}}{N\_{j}}$) and those who arrive from other locations ($\frac{S\_{j,t}\sum\_km\_{j,k}^tx\_{k,t}\beta\_{k,t}}{N\_{j}+\sum\_km\_{j,k}^t}$), which is calculated accounting for the flow of population. For this version, we are going to play down the effect of local transmission so that we can see the effect of population movement clearly. From here, the simulations can be built using simple matrix calculation and loops. We are essentially creating a combination of two markov processes, one is the process from susceptible to infected to recovered and the other is the process of disease spreading from one location to another. The simulations run through the markov chain iteratively.
 
 ## Assumptions
 
@@ -141,13 +141,13 @@ Modelling the spread of an infectious disease is hard as the system is dynamic a
 * No measure (e.g. quarantine, isolation, hospitalisation) is taken to tackle the outbreak.
 * The outbreak starts from a populous and well-connected area (e.g. Shinjuku) with an initial 100 infected cases.
 
-These assumptions probably mean that the simulations are based on the absolute worst-case scenario and it is very unlikely that we are going to see it in real life. However, the simulations can still provide a scope to see the role of transportation and human movement play in a potential outbreak in megacities.
+These assumptions probably mean that the simulations are based on the ideal scenario and it is very unlikely that we are going to see it in real life. However, the simulations can still provide a scope to see the role of transportation and human movement play in a potential outbreak in megacities.
 
 ## Data
 
 To model the spread of the disease we need to know the pattern of movement in a typical day. I have found the "Traffic Flow: Person Trip OD Amount Data" from [Japan National Land Numeric Information website](http://nlftp.mlit.go.jp/ksj-e/gml/datalist/KsjTmplt-S05-b.html). The dataset has OD (origin-destination) amounts by the purpose and by the transportation means between zones derived from surveys on person trips in three major metropolitan areas (Tokyo urban area, Kinki Urban Area, and Chukyo urban area). I used a subset of the Tokyo urban area data.
 
-We also need to know the population in each of the simulated locations. This kind of information is available through the format of raster file, which I got from [WorldPop](https://www.worldpop.org/geodata/summary?id=6381). The original resolution is 100 m<sup>2</sup>. Simulating at this resolution in the central Tokyo area would generate hundreds of millions of cells, which is not practical. I, therefore, used a much lower resolution at 1 km<sup>2</sup>. This still makes the population data at a finer level than the OD flow data which is at zone-level (i.e. sub-district). I have matched the two datasets by making a couple of simple assumptions. 
+We also need to know the population in each of the simulated locations. This kind of information is available through the format of raster file, which I got from [WorldPop](https://www.worldpop.org/geodata/summary?id=6381). The original resolution is 100 m<sup>2</sup>. Simulating at this resolution in the central Tokyo area would generate hundreds of millions of cells, which is not practical. I, therefore, used a much lower resolution at 1 km<sup>2</sup>. This still makes the population data at a finer level than the OD flow data which is at zone-level (i.e. sub-district). I have matched the two datasets by making a couple of simple assumptions.
 
 Combining these two datasets we have something below. The heatmap shows the population density while the lines are OD flows.
 
