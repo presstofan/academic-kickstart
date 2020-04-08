@@ -1,9 +1,9 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "COVID-19 Cases Tracker"
-subtitle: "A placeholder"
-summary: "A placeholder, updated daily"
+title: "COVID-19 Deaths Tracker"
+subtitle: ""
+summary: "Updated daily"
 authors: [databentobox]
 tags: [COVID-19, 新冠肺炎]
 categories: [COVID-19]
@@ -28,12 +28,13 @@ image:
 projects: []
 ---
 
+It has become a consensus in the data science community that the number of reported COVID-19 cases is not a reliable metric to track the pandemic. It all boils down to the point that there are not enough tests done and many of the people who are infected are asymptomatic. FiveThirtyEight published an [article](https://fivethirtyeight.com/features/coronavirus-case-counts-are-meaningless/) explain this in details.
+
+The number of COVID-19 deaths, however, is more telling. Although it is a bit delayed (i.e. it probably reflects the situation two weeks ago rather than right now), it should be largely proportional to the overall cases unless a mutation creates a more deadly virus or the health care system is overwhelmed.
+
+Mostly for my own peace of mind, I made the plot below, summarising the number of COVID-19 deaths by country. It has been plotted on the log10 scale with reference lines to contextualise the magnitudes. I aim to update this daily using the [dataset](https://github.com/CSSEGISandData/COVID-19) consolidated by [Johns Hopkins CSSE](https://systems.jhu.edu/).
+
 <div>
     <a href="https://plotly.com/~presstofan/92/" target="_blank" title="2019nCov_deaths_by_country_log" style="display: block; text-align: center;"><img src="https://plotly.com/~presstofan/92.png" alt="2019nCov_deaths_by_country_log" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plotly.com/404.png';" /></a>
     <script data-plotly="presstofan:92" src="https://plotly.com/embed.js" async></script>
-</div>
-
-<div>
-    <a href="https://plot.ly/~presstofan/86/?share_key=C4jQgPDFhyxdhhoFXUxGhy" target="_blank" title="2019nCov_confirmed_cases_by_country_log" style="display: block; text-align: center;"><img src="https://plot.ly/~presstofan/86.png?share_key=C4jQgPDFhyxdhhoFXUxGhy" alt="2019nCov_confirmed_cases_by_country_log" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="presstofan:86" sharekey-plotly="C4jQgPDFhyxdhhoFXUxGhy" src="https://plot.ly/embed.js" async></script>
 </div>
