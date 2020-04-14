@@ -28,7 +28,11 @@ image:
 projects: []
 ---
 
-I have recently been asked to generate a social network graph to show how friends on Facebook are connected. This type of network graph can be used to identify communities as well as the gatekeepers of each community in the network, the value of which has been explained in the iconic paper [The Strength of Weak Ties](https://www.jstor.org/stable/2776392?seq=1#page_scan_tab_contents) by Mark Granovetter. [Here](https://www.forbes.com/sites/jacobmorgan/2014/03/11/every-employee-weak-ties-work/) is a more accessible article about this idea. 
+{{% toc %}}
+
+## Introduction
+
+I have recently been asked to generate a social network graph to show how friends on Facebook are connected. This type of network graph can be used to identify communities as well as the gatekeepers of each community in the network, the value of which has been explained in the iconic paper [The Strength of Weak Ties](https://www.jstor.org/stable/2776392?seq=1#page_scan_tab_contents) by Mark Granovetter. [Here](https://www.forbes.com/sites/jacobmorgan/2014/03/11/every-employee-weak-ties-work/) is a more accessible article about this idea.
 
 I hope this post can serve as a guide to a quick and simple exploratory of social network and its basic metrics. There are three parts: Part I is about retrieving the friend data we need for building the network. Part II and Part III are the more exciting parts where we will run some analyses on the network. So here it goes.
 
@@ -42,7 +46,7 @@ In order to make the script work, we will need to set up Selenium ChromeDriver f
 
 ### Step 2: Set up the helper functions
 
-Once making sure the ChromeDriver, the following script by [Lucas Allen](https://github.com/lgallen/twitter-graph) and modified by [Eliot Andres](https://github.com/EliotAndres/facebook-friend-graph) can be used to scrap the friend network. First, we will need to load a couple of useful packages. Note that I have used Python 3 to build the script below. You might need to set up a virtual environment to make it works. I would recommend [Pipenv](https://docs.pipenv.org/en/latest/) for future-proofing your virtual environment management workflow.
+Once making sure the ChromeDriver, the following script by [Lucas Allen](https://github.com/lgallen/twitter-graph) and modified by [Eliot Andres](https://github.com/EliotAndres/facebook-friend-graph) can be used to scrap the friend network. First, we will need to load a couple of useful packages. Note that I have used Python 3 to build the script below. You might need to set up a virtual environment to make it works. I would recommend [Pipenv](https://docs.pipenv.org/en/latest/) for future-proofing your virtual environment management workflow. Conda is also a good choice if you are already in that ecosystem.
 
 Below are a couple of key modules that we will use in the script:
 
@@ -267,7 +271,7 @@ central_friends = {}
 
 for k, v in friend_graph.items():
     # This contains the list number of mutual friends.
-    # Doing len(v) does not work because ometimes instead of returning mutual
+    # Doing len(v) does not work because instead of returning mutual
     # friends, Facebook returns all the person's friends
     intersection_size = len(np.intersect1d(list(friend_graph.keys()), v))
     if intersection_size > 2:
@@ -335,7 +339,7 @@ nx.draw_networkx(G, pos = pos,
 limits=plt.axis('off') # turn of axisb
 ```
 
-![Facebook Friends Network Graph Commmunities](./facebook_graph_comm.png)
+![Facebook Friends Network Graph Communities](./facebook_graph_comm.png)
 
 6 communities have emerged and they correspond to my friends from school, undergraduate, postgraduate and work. I have removed all the labels for privacy but you could add them in yourselves. You might find a couple of interesting links between groups of friends that you were not aware of before!
 
@@ -398,7 +402,7 @@ The graph above shows my friend network with the size of the nodes reflects the 
 Betweenness Centrality is a measure of how often a node lies along the shortest path between two other nodes. It can be seen as an index of potential for gatekeeping, brokering, controlling the flow, and also of liaising otherwise separate parts of the network. it often indicates power and access to the diversity of whatever flows in the network and the potential for synthesizing. Nodes with high Betweenness Centrality are usually bridges between groups or k-local bridges.
 
 ```python
-#  Betweeness centrality
+#  Betweenness centrality
 between = nx.betweenness_centrality(G_f)
 values = [between.get(node)*500 for node in G_f.nodes()]
 

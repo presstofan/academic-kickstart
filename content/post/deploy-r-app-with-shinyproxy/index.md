@@ -28,6 +28,8 @@ image:
 projects: []
 ---
 
+{{% toc %}}
+
 ## Background
 
 [R Shiny](https://shiny.rstudio.com/) is a powerful tool for building data products, from data visualisations to predictive models. Built by RStudio, this package is highly integrated with the RStudio IDE, making it the primary choice for production. Although it is relatively easy to build a Shiny app and make it run on our local machines, deploying the app on the cloud for production could be a daunting task. There are many ways of deploying Shiny apps and they all have their advantages and drawbacks, thus need to be decided on a case-by-case basis. For example, building a client-facing model prediction app would have its unique requirements. Important features to consider are customisation of the UI, authentication, access control, security, performance and cost-efficiency. In this post, I will provide a quick review of different deployment strategies and guide you through one of my favourite methods using ShinyProxy with Docker.
