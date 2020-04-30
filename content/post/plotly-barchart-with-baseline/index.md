@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Creating bar charts with baselines using customised shapes in Plotly"
+title: "Creating Bar Charts with Baselines Using Customised Shapes in Plotly"
 subtitle: ""
 summary: "A quick demonstration of adding customised shapes to bar charts in Plotly with R."
 authors: [databentobox]

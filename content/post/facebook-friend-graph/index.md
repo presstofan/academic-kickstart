@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Creating and analysing Facebook friend network graphs using Python"
+title: "Creating and Analysing Facebook Friend Network Graphs Using Python"
 subtitle: ""
 summary: "A guide to analysing social network with Python"
 authors: [databentobox]

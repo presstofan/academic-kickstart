@@ -1,14 +1,14 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Cache time-consuming computations in R"
+title: "Cache Time-consuming Computations in R"
 subtitle: ""
 summary: "Quick demonstration of caching time-consuming computations in R"
 authors: [databentobox]
 tags: [R, caching]
 categories: [R]
 date: 2016-08-07T17:30:42Z
-lastmod: 2019-11-01T12:37:16Z
+lastmod: 2016-08-07T17:30:42Z
 featured: false
 draft: false
 
@@ -29,9 +29,11 @@ projects: []
 ---
 
 ## Introduction
+
 An R function that is able to cache potentially time-consuming computations could be useful in many cases. For example, taking the mean of a numeric vector is typically a fast operation. However, for a very long vector, it may take too long to compute the mean, especially if it has to be computed repeatedly (e.g. in a loop). If the contents of a vector are not changing, it may make sense to cache the value of the mean so that when we need it again, it can be looked up in the cache rather than recomputed.
 
 ## Example
+
 Matrix inversion is computationally costly. In this example, we will try to cache an inverse matrix. The `<<-` operator which can be used to assign a value to an object in an environment that is different from the current environment. Below are two functions that are used to create a special object that stores a matrix and caches its inverse matrix.
 
 The first function, `makeCacheMatrix` creates a special "matrix", which is really a list containing a function to

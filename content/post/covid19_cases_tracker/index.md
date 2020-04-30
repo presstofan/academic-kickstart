@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "COVID-19 Deaths Tracker"
+title: "Global COVID-19 Deaths Tracker"
 subtitle: ""
 summary: "Updated daily"
 authors: [databentobox]

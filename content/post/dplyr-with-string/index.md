@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Dplyr functions with string"
+title: "Dplyr Functions with String"
 subtitle: ""
 summary: "A trick to use string as arguments in dplyr functions"
 authors: [databentobox]

@@ -1,11 +1,11 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Are my Twitter followers bots"
+title: "Are My Twitter Followers Bots?"
 subtitle: ""
-summary: "A Python script that checks twitter bots with Botometer API"
+summary: "A Python script that checks Twitter bots with Botometer API"
 authors: [databentobox]
-tags: [Python, Social Media, MongoDB]
+tags: [Python, Social Network, MongoDB]
 categories: [Social Network]
 date: 2016-07-18T16:37:14Z
 lastmod: 2016-07-18T16:37:14Z
