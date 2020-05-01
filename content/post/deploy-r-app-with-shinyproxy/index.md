@@ -363,16 +363,12 @@ proxy:
   docker:
       internal-networking: true
   specs:
-  - id: 01_hello
-    display-name: Hello Application
-    description: Application which demonstrates the basics of a Shiny app
-    container-cmd: ["R", "-e", "shinyproxy::run_01_hello()"]
-    container-image: openanalytics/shinyproxy-demo
-    container-network: sp-example-net
-  - id: 06_tabsets
-    container-cmd: ["R", "-e", "shinyproxy::run_06_tabsets()"]
-    container-image: openanalytics/shinyproxy-demo
-    container-network: sp-example-net
+  - id: euler
+    display-name: Euler's number
+    container-cmd: ["R", "-e", "shiny::runApp('/root/euler')"]
+    container-image: shiny-euler-app
+    port: 3838
+    access-groups: admins
 
 logging:
   file:
@@ -447,11 +443,12 @@ service docker start
 
 Now we need to **switch back to our local machine** and push the two Docker images to Docker Hub, so that we can then pull the images to the EC2 instance. Of course, you can also save the Docker images locally and SFTP them to the EC2 instance. However, this seems to be a much slower way compared to Docker Hub as the latter compresses the files for uploading and storage. If you want to use the SFTP, [here](https://angus.readthedocs.io/en/2014/amazon/transfer-files-between-instance.html) is a useful guide.
 
-Let's log on Docker Hub website and create two repositories called `shinyproxy-example` and `shiny-euler-app` to host the two images. Before we push the images to Docker Hub, we need to log on to the Hub. 
+Let's log on Docker Hub website and create two repositories called `shinyproxy-example` and `shiny-euler-app` to host the two images. Before we push the images to Docker Hub, we need to log on to the Hub.
 
 ```{sh}
 docker login
 ```
+
 Then type in your username and password when prompted. You will see 'Login Succeeded' in the console. Now, push the images to the two repositories:
 
 ```{sh}
@@ -470,7 +467,7 @@ docker pull YOUR_USERNAME/shinyproxy-example
 docker pull YOUR_USERNAME/shiny-euler-app
 ```
 
-When the pulling is done, we need to tag the images so that the names of the images matched what we have specified in the `application.yml` of the `shinyproxy-example` container
+When the pulling is done, we need to tag the images so that the names of the images matched what we have specified in the `application.yml` of the `shinyproxy-example` container.
 
 ```{sh}
 docker tag YOUR_USERNAME/shiny-euler-app shiny-euler-app
