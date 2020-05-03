@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Deploying R Shiny apps using ShinyProxy on Windows 10"
-subtitle: ""
+subtitle: "A setup tutorial for standalone and containerised ShinyProxy on local machine or AWS EC2"
 summary: "This post provides a guide to use ShinyProxy, an open-source tool with enterprise features, to deploy R Shiny apps."
 authors: [databentobox]
 tags: [R, R Shiny, ShinyProxy]
@@ -367,8 +367,8 @@ proxy:
     display-name: Euler's number
     container-cmd: ["R", "-e", "shiny::runApp('/root/euler')"]
     container-image: shiny-euler-app
-    port: 3838
     access-groups: admins
+    container-network: sp-example-net
 
 logging:
   file:
@@ -449,11 +449,13 @@ Let's log on Docker Hub website and create two repositories called `shinyproxy-e
 docker login
 ```
 
-Then type in your username and password when prompted. You will see 'Login Succeeded' in the console. Now, push the images to the two repositories:
+Then type in your username and password when prompted. You will see 'Login Succeeded' in the console. Now, we need to tag those two images and push them to your DockerHub repos:
 
 ```{sh}
-docker push shinyproxy-example
-docker push shiny-euler-app
+docker tag shinyproxy-example YOUR_USERNAME/shinyproxy-example
+docker tag shiny-euler-app YOUR_USERNAME/shiny-euler-app
+docker push YOUR_USERNAME/shinyproxy-example
+docker push YOUR_USERNAME/shiny-euler-app
 ```
 
 It can take a couple of minutes depending on the size of the images. When it is done, **switch to the EC2 console** and pull the images. Note that you also need to login here.

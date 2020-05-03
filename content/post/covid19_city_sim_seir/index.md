@@ -2,8 +2,8 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Simulating Coronavirus Outbreak in City with Origin-Destination Matrix and SEIR Model"
-subtitle: ""
-summary: "A step-by-step guide on simulating and visualising the spread of coronavirus in the Greater Tokyo Area based on Origin-Destination Matrix and SEIR Model with R"
+subtitle: "A step-by-step guide on simulating and visualising the spread of coronavirus in the Greater Tokyo Area based on Origin-Destination Matrix and SEIR Model with R"
+summary: "This is a step-by-step guide on simulating and visualising the spread of coronavirus in the Greater Tokyo Area based on Origin-Destination Matrix and SEIR Model with R."
 authors: [databentobox]
 tags: [COVID-19, 新冠肺炎, R]
 categories: [COVID-19]
