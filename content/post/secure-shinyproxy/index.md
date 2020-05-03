@@ -133,10 +133,10 @@ Below is the structure of the directory `shinyproxy-docker-compose-demo`:
 ```{sh}
 |   docker-compose.yml
 |   init-letsencrypt.sh
-|   
+|
 +---application
 |       application.yml
-|       
+|
 \---data
     \---nginx
             app.conf
@@ -447,7 +447,7 @@ sudo ./init-letsencrypt.sh
 You will see something like below if the certificate is successfully issued.
 
 ```{console}
-Congratulations! You have successfully enabled https://example.com and https://www.example.com 
+Congratulations! You have successfully enabled https://example.com and https://www.example.com
 
 -------------------------------------------------------------------------------------
 IMPORTANT NOTES:
