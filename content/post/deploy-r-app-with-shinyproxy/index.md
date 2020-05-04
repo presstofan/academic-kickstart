@@ -489,3 +489,9 @@ docker run -d -v /var/run/docker.sock:/var/run/docker.sock --net sp-example-net 
 ```
 
 That's it. After a few seconds, the example ShinyProxy app will be available at the public DNS of your instance (e.g. ec2-X-XX-XXX-XX.compute-1.amazonaws.com). Now we have a fully functional Shiny app served by ShinyProxy and hosted on AWS. In another post, I will go through a couple of options to make our apps more secure. Stay tuned!
+
+{{% alert note  %}}
+3 May 2020 Update:
+
+A new tutorial on [Securing and monitoring ShinyProxy deployment of R Shiny apps]({{< ref "/post/secure-shinyproxy/index.md" >}}) is now available.
+{{% /alert %}}
