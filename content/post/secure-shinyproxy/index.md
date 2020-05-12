@@ -8,7 +8,7 @@ authors: [databentobox]
 tags: [R, R Shiny, ShinyProxy]
 categories: [R Shiny]
 date: 2020-05-03T23:15:55+01:00
-lastmod: 2020-05-03T23:15:55+01:00
+lastmod: 2020-05-12T17:03:55+01:00
 featured: true
 draft: false
 
@@ -47,6 +47,10 @@ Before we diving into the tutorial, there are a couple of things that need to be
 ### Step 1: Setting up Docker
 
 Setting up Docker engine on your local machine for development is important for this tutorial. Please check [this section]({{< ref "/post/deploy-r-app-with-shinyproxy/index.md#installing-docker" >}}) for details on how to set up Docker engine on Windows 10. If you are using other OS, please check the [official Docker installation guide](https://docs.docker.com/get-docker/).
+
+{{% alert note  %}}
+You may find the shell script from [get.docker.com](https://get.docker.com/) particularly useful.
+{{% /alert %}}
 
 ### Step 2: Building the demo Shiny app and containerised ShinyProxy Docker images
 
