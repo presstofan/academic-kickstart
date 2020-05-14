@@ -54,6 +54,25 @@ height = ""
   # cta_icon = "graduation-cap"
 
 [[item]]
+  title = "Jooble"
+  content = "Search jobs with Jooble"
+  align = "center"  # Choose `center`, `left`, or `right`.
+
+  # Overlay a color or image (optional).
+  #   Deactivate an option by commenting out the line, prefixing it with `#`.
+  overlay_color = "#fbbfb7"  # An HTML color value.
+  overlay_img = "blogroll/Jooble.png"  # Image path relative to your `static/img/` folder.
+  overlay_filter = 0.5  # Darken the image. Value in range 0-1.
+
+  # Call to action button (optional).
+  #   Activate the button by specifying a URL and button label below.
+  #   Deactivate by commenting out parameters, prefixing lines with `#`.
+  cta_label = "Search"
+  cta_url = "https://jooble.org/"
+  # cta_icon_pack = "fas"
+  # cta_icon = "graduation-cap"
+
+[[item]]
   title = "Dinesh Vatvani"
   content = "A Python and data analysis blog by my friend and fellow data scientist Dinesh Vatvani"
   align = "center"  # Choose `center`, `left`, or `right`.
