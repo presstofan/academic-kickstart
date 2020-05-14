@@ -9,7 +9,7 @@ tags: [COVID-19, 新冠肺炎]
 categories: [COVID-19]
 date: 2020-03-08T20:30:43Z
 lastmod: 2020-03-08T20:30:43Z
-featured: true
+featured: false
 draft: false
 
 # Featured image
