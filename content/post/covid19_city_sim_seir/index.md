@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Simulating Coronavirus Outbreak in City with Origin-Destination Matrix and SEIR Model"
+title: "Simulating Coronavirus Outbreak in Cities with Origin-Destination Matrix and SEIR Model"
 subtitle: "A step-by-step guide on simulating and visualising the spread of coronavirus in the Greater Tokyo Area based on Origin-Destination Matrix and SEIR Model with R"
 summary: "This is a step-by-step guide on simulating and visualising the spread of coronavirus in the Greater Tokyo Area based on Origin-Destination Matrix and SEIR Model with R."
 authors: [Yihui Fan]

@@ -8,7 +8,7 @@ authors: [Yihui Fan]
 tags: [COVID-19, 新冠肺炎]
 categories: [COVID-19]
 date: 2020-03-08T20:30:43Z
-lastmod: 2020-03-08T20:30:43Z
+lastmod: 2020-03-28T20:30:43Z
 featured: false
 draft: false
 
@@ -27,6 +27,10 @@ image:
 #   Otherwise, set `projects = []`.
 projects: []
 ---
+
+{{% alert notice  %}}
+**28 Mar 2020 Update**: The model has been updated to SEIR model to account for the incubation period. A complete note on the new model, assumptions and codes for the simulations and visualisation can be found in the post [Simulating Coronavirus Outbreak in Cities with Origin-Destination Matrix and SEIR Model]({{< ref "/post/covid19_city_sim_seir/index.md" >}}).
+{{% /alert %}}
 
 In dealing with the outbreak of the coronavirus, China has slapped extraordinary lockdowns on Wuhan and nearby cities, effectively curbing all movement of over 50 million people. Italy is going to extend the initial lockdowns of northern states to include the whole country. Many cities around the world have cancelled school and advising people to work from home, hoping to contain the virus by reducing movement and contact. The UK government also introduced the virus plan, in which social-distancing measures such as school closures and restrictions on the use of public transport are on the list. But what role transportation plays in spreading the disease in modern megacities? Can these measures be effective?
 
