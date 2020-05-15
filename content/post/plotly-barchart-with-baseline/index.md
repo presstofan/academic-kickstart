@@ -4,7 +4,7 @@
 title: "Creating Bar Charts with Baselines Using Customised Shapes in Plotly"
 subtitle: ""
 summary: "A quick demonstration of adding customised shapes to bar charts in Plotly with R."
-authors: [databentobox]
+authors: [Yihui Fan]
 tags: [R, Plotly]
 categories: [R]
 date: 2019-11-24T14:33:21Z

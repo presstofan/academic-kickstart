@@ -4,7 +4,7 @@
 title: "新冠肺炎北京市数据分析 —— 2月9日 Data Analysis of COVID-19 (Coronavirus) Cases in Beijing - 9 Feb"
 subtitle: ""
 summary: "文章包括病例接触史，各城区数据汇总和趋势分析，以及已知病例活动地点的地图整理。最后更新于2月9日。Updated analysis on contact history of new cases, number of cases in each district and trend, and a map showing the where the new cases were found. Last update on 9 Feb."
-authors: [databentobox]
+authors: [Yihui Fan]
 tags: [COVID-19, 新冠肺炎]
 categories: [COVID-19]
 date: 2020-02-09T12:05:29Z

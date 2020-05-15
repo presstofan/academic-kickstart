@@ -1,6 +1,6 @@
 ---
 # Display name
-name: databentobox
+name: Yihui Fan
 
 # Username (this should match the folder name)
 authors:
@@ -18,12 +18,12 @@ organizations:
   url:
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests predictive modelling, natural language processing and data visualisation.
+bio: I work as a data scientist at a management consultancy firm. I enjoy coding in R and Python, building data products and visualisation tools and I am also a deep learning enthusiast.
 
 interests:
 - Statistical Modelling
-- Computational Linguistics
-- Artificial Intelligence
+- Natural Language Processing and Deep Learning
+- Data Visualisation
 - Behavioural Science
 
 education:
@@ -76,4 +76,4 @@ user_groups:
 
 Working as a data scientist in a management consulting firm, my job involves helping businesses and policymakers to understand and manage consumer decision-making, solving business problems, generating data-driven insights, and developing data products.
 
-I am also an AI / deep learning enthusiast and enjoy taking part in data science competitions and open source projects.
+I am also an AI / deep learning enthusiast and enjoy taking part in data science competitions and open source projects. If you find my posts interesting, please connect with me on {{< icon name="linkedin" pack="fab" >}}or{{< icon name="twitter" pack="fab" >}}and I am happy to chat more!

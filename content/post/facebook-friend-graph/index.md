@@ -4,7 +4,7 @@
 title: "Creating and Analysing Facebook Friend Network Graphs Using Python"
 subtitle: ""
 summary: "A guide to analysing social network with Python"
-authors: [databentobox]
+authors: [Yihui Fan]
 tags: [Python, Social Network, Network Analysis]
 categories: [Social Network]
 date: 2019-07-28T13:30:00Z

@@ -4,7 +4,7 @@
 title: "Securing and monitoring ShinyProxy deployment of R Shiny apps"
 subtitle: "A setup tutorial for using ShinyProxy together with Nginx, Certbot, AWS Cognito, InfluxDB, Telegraf and Grafana"
 summary: "This post provides a guide to secure ShinyProxy with Nginx, Certbot and AWS Cognito, and monitor usage statistics with InfluxDB, Telegraf and Grafana."
-authors: [databentobox]
+authors: [Yihui Fan]
 tags: [R, R Shiny, ShinyProxy]
 categories: [R Shiny]
 date: 2020-05-03T23:15:55+01:00

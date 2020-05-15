@@ -4,7 +4,7 @@
 title: "The Effectiveness of Reducing Population Movement in Managing Coronavirus Outbreak"
 subtitle: "Simulations of coronavirus outbreak in central Tokyo area based on SIR model and origin-destination flow data"
 summary: "This post illustrates simulations of coronavirus outbreak in central Tokyo area based on SIR model and origin-destination flow data."
-authors: [databentobox]
+authors: [Yihui Fan]
 tags: [COVID-19, 新冠肺炎]
 categories: [COVID-19]
 date: 2020-03-08T20:30:43Z

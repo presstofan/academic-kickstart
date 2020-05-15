@@ -4,7 +4,7 @@
 title: "新冠肺炎北京市数据分析 —— 2月2日 Data Analysis of COVID-19 (Coronavirus) Cases in Beijing - 2 Feb"
 subtitle: ""
 summary: "文章包括175例病例的特征分析和趋势分析，病例接触史以及各城区数据汇总分析。最后更新于2月3日 Last update on 3 Feb"
-authors: [databentobox]
+authors: [Yihui Fan]
 tags: [COVID-19, 新冠肺炎]
 categories: [COVID-19]
 date: 2020-02-02T23:27:25Z

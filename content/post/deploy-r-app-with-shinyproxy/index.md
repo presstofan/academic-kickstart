@@ -4,7 +4,7 @@
 title: "Deploying R Shiny apps using ShinyProxy on Windows 10"
 subtitle: "A setup tutorial for standalone and containerised ShinyProxy on local machine or AWS EC2"
 summary: "This post provides a guide to use ShinyProxy, an open-source tool with enterprise features, to deploy R Shiny apps."
-authors: [databentobox]
+authors: [Yihui Fan]
 tags: [R, R Shiny, ShinyProxy]
 categories: [R Shiny]
 date: 2019-11-05T18:12:43Z

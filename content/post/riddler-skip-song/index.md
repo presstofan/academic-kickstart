@@ -4,7 +4,7 @@
 title: "Riddler: How Fast Can You Skip To Your Favourite Song?"
 subtitle: ""
 summary: "A solution to FiveThirtyEight's weekly riddle"
-authors: [databentobox]
+authors: [Yihui Fan]
 tags: [Python, Monte Carlo Simulation]
 categories: [Riddle]
 date: 2019-12-15T22:37:14Z
