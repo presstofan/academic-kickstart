@@ -90,7 +90,7 @@ Following this framework, we will need two AWS EC2 instances, one for hosting Sh
 * Open port 22 (SSH), 80 (HTTP) and 443 (HTTPS)
 * Minimal 1 GiB of Memory
 * Minimal 8 GB of Storage
-* Install Docker Engine and Docker Compose
+* Install Docker Engine and docker-compose
 
 *Usage Monitor Machine:*
 
@@ -102,7 +102,7 @@ Following this framework, we will need two AWS EC2 instances, one for hosting Sh
 
 Later in this tutorial, I will refer to the two AWS instances as `ShinyProxy Instance` and `Usage Monitor Instance`. Theoretically, we can use one instance to host both of the ShinyProxy and the usage monitor tools but we won't get much flexibility if we decide to launch another ShinyProxy in future.
 
-The installation of Docker Engine and Docker Compose on Ubuntu won't be covered here. You can check out the official guides: [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) and [Install Docker Compose](https://docs.docker.com/compose/install/).
+The installation of Docker Engine and docker-compose on Ubuntu won't be covered here. You can check out the official guides: [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) and [Install docker-compose](https://docs.docker.com/compose/install/).
 
 According to my experience, containerised ShinyProxy tend to be memory-hungry. It uses about 300 MiB even when idle. The total memory usage depends on your Shiny app but I think we should aim to get at least 1 GiB Memory for it to run smoothly. In production, making sure you have enough memory and adding sway memory are always good ideas. Fortunately, an AWS `t2.micro` instance is enough for the demo, and it is on the free tier!
 
@@ -126,7 +126,7 @@ If you decide to use AWS Cognito for authentication (which I highly recommend), 
 
 ### Step 1: Preparing configuration files
 
-For the core services (e.g. ShinyProxy, Nginx and Certbot), we will use Docker Compose to set them up in one go. I have prepared a template for this based on this wonderful [tutorial](https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71). I have tailored it to work with ShinyProxy but feel free to check the original post for technical details, which I won't cover here.
+For the core services (e.g. ShinyProxy, Nginx and Certbot), we will use docker-compose to set them up in one go. I have prepared a template for this based on this wonderful [tutorial](https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71). I have tailored it to work with ShinyProxy but feel free to check the original post for technical details, which I won't cover here.
 
 First, fork (and clone) the template repo:
 
@@ -416,7 +416,7 @@ Once you are happy with the configuration files, you may want to commit and push
 
 ### Step 2: Setting up `ShinyProxy Machine`
 
-SSH to the `ShinyProxy Machine` and git pull your own configuration repo `shinyproxy-docker-compose-demo` (or some other name you specified). The structure of the files and directory should remain the same. You should already have the Docker Engine and Docker Compose installed. Start the Docker service:
+SSH to the `ShinyProxy Machine` and git pull your own configuration repo `shinyproxy-docker-compose-demo` (or some other name you specified). The structure of the files and directory should remain the same. You should already have the Docker Engine and docker-compose installed. Start the Docker service:
 
 ```{sh}
 sudo service docker start
@@ -609,7 +609,7 @@ wget https://dl.influxdata.com/influxdb/releases/influxdb_1.8.0_amd64.deb
 sudo dpkg -i influxdb_1.8.0_amd64.deb
 ```
 
-You can also use Docker image to build InfluxDB or even Docker Compose to set up, but I found the standalone version simple enough to set up and maintain. Once the installation is competed, start the service by:
+You can also use Docker image to build InfluxDB or even docker-compose to set up, but I found the standalone version simple enough to set up and maintain. Once the installation is competed, start the service by:
 
 ```{sh}
 sudo service influxdb start
