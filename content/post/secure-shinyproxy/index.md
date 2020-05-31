@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Securing and monitoring ShinyProxy deployment of R Shiny apps"
+title: "Securing and Monitoring ShinyProxy Deployment of R Shiny Apps"
 subtitle: "A setup tutorial for using ShinyProxy together with Nginx, Certbot, AWS Cognito, InfluxDB, Telegraf and Grafana"
 summary: "This post provides a guide to secure ShinyProxy with Nginx, Certbot and AWS Cognito, and monitor usage statistics with InfluxDB, Telegraf and Grafana."
 authors: [Yihui Fan]
@@ -685,4 +685,6 @@ At the time of the writing, there is no available Grafana dashboard for ShinyPro
 
 ![Grafana Dashboard ShinyProxy](grafana_dashboard_shinyproxy.png)
 
-That concludes this tutorial. We now have a functional Shiny app served by ShinyProxy with a secured host and monitoring capability. One thing we can further improve is the scalability of the app. Currently, it is served by a single AWS EC2 instance. Depending on the size of memory and number of vCPUs, it can serve one to a few dozen users simultaneously. However, we usually don't expect users 24/7. As such, building an elastic stack using Docker Swarm or Kubernetes would be much more cost-efficient. In the next post, I will explore this route. So stay tuned!
+## Next Steps
+
+That concludes this tutorial. We now have a functional Shiny app served by ShinyProxy with a secured host and monitoring capability. One thing we can further improve is the scalability of the app. Currently, it is served by a single AWS EC2 instance. Depending on the size of memory and number of vCPUs, it can serve one to a few dozen users simultaneously. However, we usually don't expect users 24/7. As such, building a scalable app using Docker Swarm or Kubernetes would be much more cost-efficient. In the next post, I will explore this route. So stay tuned!
