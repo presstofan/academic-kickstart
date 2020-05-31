@@ -365,7 +365,7 @@ These were created using the commands and labels in the `traefik.yml` file. For 
 
 ## Setting up ShinyProxy stack
 
-Let's move on to set up our main ShinyProxy stack. Just a reminder that this stack includes the ShinyProxy (acts like a container manager for Shiny apps) and your Shiny apps. First, clone my GitHub repo:
+Let's move on to set up our main ShinyProxy stack. Just a reminder that this stack includes the ShinyProxy (acts like a container manager for Shiny apps) and your Shiny apps. First, clone [my GitHub repo](https://github.com/presstofan/shinyproxy-docker-swarm-demo):
 
 ```{sh}
 git clone https://github.com/presstofan/shinyproxy-docker-swarm-demo.git
