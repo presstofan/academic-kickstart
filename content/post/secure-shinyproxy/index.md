@@ -28,6 +28,17 @@ image:
 projects: []
 ---
 
+{{% alert note  %}}
+Depending on what you are looking for and your experience with Docker technology and ShinyProxy, you may want to check my other tutorials:
+
+* For learning the framework and testing containerised Shiny apps locally: [Deploying R Shiny apps using ShinyProxy on Windows 10]({{< ref "/post/deploy-r-app-with-shinyproxy/index.md" >}})
+
+* For securely deploying Shiny apps on Clouds (single node): This post
+
+* For deploying secure, scalable, production-grade Shiny apps with Docker Swarm: [Effectively Deploying and Scaling Shiny Apps with ShinyProxy, Traefik and Docker Swarm]({{< ref "/post/shinyproxy-with-docker-swarm/index.md" >}})
+
+{{% /alert %}}
+
 {{% toc %}}
 
 ## Introduction
