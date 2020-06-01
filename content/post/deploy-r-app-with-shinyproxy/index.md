@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Deploying R Shiny apps using ShinyProxy on Windows 10"
-subtitle: "A setup tutorial for standalone and containerised ShinyProxy on local machine or AWS EC2"
+subtitle: "A tutorial for standalone and containerised ShinyProxy on local machine or AWS EC2"
 summary: "This post provides a guide to use ShinyProxy, an open-source tool with enterprise features, to deploy R Shiny apps."
 authors: [Yihui Fan]
 tags: [R, R Shiny, ShinyProxy]

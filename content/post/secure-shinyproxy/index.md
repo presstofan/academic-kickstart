@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Securing and Monitoring ShinyProxy Deployment of R Shiny Apps"
-subtitle: "A setup tutorial for using ShinyProxy together with Nginx, Certbot, AWS Cognito, InfluxDB, Telegraf and Grafana"
+subtitle: "A tutorial for using ShinyProxy together with Nginx, Certbot, AWS Cognito, InfluxDB, Telegraf and Grafana"
 summary: "This post provides a guide to secure ShinyProxy with Nginx, Certbot and AWS Cognito, and monitor usage statistics with InfluxDB, Telegraf and Grafana."
 authors: [Yihui Fan]
 tags: [R, R Shiny, ShinyProxy]

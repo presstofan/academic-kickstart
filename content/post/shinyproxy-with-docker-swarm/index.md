@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Effectively Deploying and Scaling Shiny Apps with ShinyProxy, Traefik and Docker Swarm"
-subtitle: "A setup tutorial for deploying ShinyProxy-powered R Shiny apps in Docker Swarm mode with Traefik "
+subtitle: "A tutorial for securely and effectively deploying scalable and production-grade R Shiny apps with ShinyProxy, Docker Swarm and Traefik "
 summary: "This post provides a guide to effectively and securely scale your ShinyProxy deployment of shiny apps in production with Docker Swarm and Traefik"
 authors: [Yihui Fan]
 tags: [R, R Shiny, ShinyProxy]
