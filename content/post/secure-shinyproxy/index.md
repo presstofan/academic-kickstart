@@ -9,7 +9,7 @@ tags: [R, R Shiny, ShinyProxy]
 categories: [R Shiny]
 date: 2020-05-03T23:15:55+01:00
 lastmod: 2020-05-12T17:03:55+01:00
-featured: true
+featured: false
 draft: false
 
 # Featured image
