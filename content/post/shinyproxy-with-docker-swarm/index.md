@@ -33,7 +33,7 @@ Depending on what you are looking for and your experience with Docker technology
 
 * For learning the framework and testing containerised Shiny apps locally: [Deploying R Shiny apps using ShinyProxy on Windows 10]({{< ref "/post/deploy-r-app-with-shinyproxy/index.md" >}})
 
-* For securely deploying Shiny apps on Clouds (single node): [Securing and Monitoring ShinyProxy Deployment of R Shiny Apps]({{< ref "/post/secure-shinyproxy/index.md" >}})
+* For securely deploying Shiny apps on Clouds (single node, the docker-compose way): [Securing and Monitoring ShinyProxy Deployment of R Shiny Apps]({{< ref "/post/secure-shinyproxy/index.md" >}})
 
 * For deploying secure, scalable, production-grade Shiny apps with Docker Swarm: This post
 

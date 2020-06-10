@@ -33,7 +33,7 @@ Depending on what you are looking for and your experience with Docker technology
 
 * For learning the framework and testing containerised Shiny apps locally: [Deploying R Shiny apps using ShinyProxy on Windows 10]({{< ref "/post/deploy-r-app-with-shinyproxy/index.md" >}})
 
-* For securely deploying Shiny apps on Clouds (single node): This post
+* For securely deploying Shiny apps on Clouds (single node, the docker-compose way): This post
 
 * For deploying secure, scalable, production-grade Shiny apps with Docker Swarm: [Effectively Deploying and Scaling Shiny Apps with ShinyProxy, Traefik and Docker Swarm]({{< ref "/post/shinyproxy-with-docker-swarm/index.md" >}})
 
@@ -699,3 +699,12 @@ At the time of the writing, there is no available Grafana dashboard for ShinyPro
 ## Next Steps
 
 That concludes this tutorial. We now have a functional Shiny app served by ShinyProxy with a secured host and monitoring capability. One thing we can further improve is the scalability of the app. Currently, it is served by a single AWS EC2 instance. Depending on the size of memory and number of vCPUs, it can serve one to a few dozen users simultaneously. However, we usually don't expect users 24/7. As such, building a scalable app using Docker Swarm or Kubernetes would be much more cost-efficient. In the next post, I will explore this route. So stay tuned!
+
+{{% alert note  %}}
+1 June 2020 Update:
+
+New tutorials in this series are available:
+
+* [Effectively Deploying and Scaling Shiny Apps with ShinyProxy, Traefik and Docker Swarm]({{< ref "/post/shinyproxy-with-docker-swarm/index.md" >}})
+
+{{% /alert %}}

@@ -33,7 +33,7 @@ Depending on what you are looking for and your experience with Docker technology
 
 * For learning the framework and testing containerised Shiny apps locally: This post
 
-* For securely deploying Shiny apps on Clouds (single node): [Securing and Monitoring ShinyProxy Deployment of R Shiny Apps]({{< ref "/post/secure-shinyproxy/index.md" >}})
+* For securely deploying Shiny apps on Clouds (single node, the docker-compose way): [Securing and Monitoring ShinyProxy Deployment of R Shiny Apps]({{< ref "/post/secure-shinyproxy/index.md" >}})
 
 * For deploying secure, scalable, production-grade Shiny apps with Docker Swarm: [Effectively Deploying and Scaling Shiny Apps with ShinyProxy, Traefik and Docker Swarm]({{< ref "/post/shinyproxy-with-docker-swarm/index.md" >}})
 
@@ -47,7 +47,7 @@ Depending on what you are looking for and your experience with Docker technology
 
 ### shinyapps.io
 
-[shinyapps.io](https://www.shinyapps.io/) is an RStudio service that provides an easy solution to publish Shiny apps. RStudio fully manages all the back-end DevOps so no need to set up the environment, R server or worrying about scaling. If you are using RStudio IDE and signed up for a shinyapps.io account, it is just a few clicks away to deploy your apps. However, it can be quite pricey as their pricing plans are based on Active Hours, which are the number of hours users are active on the apps. So three clients use the app for 1 hour each would lead to 3 Active Hours. Although the app would normally be in the sleep mode if no one is using it, the wakening/sleeping cycle may take a few minutes so even someone briefly logs on and off the app, it is likely to cost 0.1-0.5 Active Hours. The service is also not competitively priced if you only look at the computing power for your cash. For example, the Starter plan (Up to 1GB RAM) will cost you $9/month with a limited number of Active Hours. While the t2.micro instance from AWS (also 1GB RAM) costs less than $8 with almost unlimited access. VM from DigitalOcean is even cheaper. A summary of shinyapps.io pricing plan is below:
+[shinyapps.io](https://www.shinyapps.io/) is an RStudio service that provides an easy solution to publish Shiny apps. RStudio fully manages all the back-end DevOps so no need to set up the environment, R server or worrying about scaling. If you are using RStudio IDE and signed up for a shinyapps.io account, it is just a few clicks away to deploy your apps. However, it can be quite pricey as their pricing plans are based on Active Hours, which are the number of hours users are active on the apps. So three clients use the app for 1 hour each would lead to 3 Active Hours. Although the app would normally be in the sleep mode if no one is using it, the wakening/sleeping cycle may take a few minutes so even someone briefly logs on and off the app, it is likely to cost 0.1-0.5 Active Hours. The service is also not competitively priced if you only look at the computing power for your cash. For example, the Starter plan (Up to 1GB RAM) will cost you &#36;9 per month with a limited number of Active Hours. While the t2.micro instance from AWS (also 1GB RAM) costs less than &#36;8 with almost unlimited access. VM from DigitalOcean is even cheaper. A summary of shinyapps.io pricing plan is below:
 
 | Plan         |     Cost     | Number of Apps | Active Hours | Custom Domain | Authentication | Multiple CPU | RAM per Instance |
 |--------------|:------------:|:--------------:|:------------:|:-------------:|:--------------:|:------------:|:----------------:|
@@ -77,7 +77,7 @@ In my opinion, shinyapps.io is more suitable for small personal projects or data
 
 ### Shiny Server or Shiny Server Pro on own premise or cloud
 
-There are two versions of Shiny Server (both of them are developed by RStudio), one is the [Shiny Server Open Source](https://rstudio.com/products/shiny/shiny-server/), and the other is the commercially licensed [Shiny Server Pro](https://rstudio.com/products/shiny-server-pro/). The former is free while the latter will set you back $9,995 / year with its base plan (20 concurrent users). The key difference is that Shiny Server Pro natively supports a variety of password authentication schemes and a centralized management console for all your apps. But crucially, with Shiny Server Pro, you can launch multiple R processes per app, which can then serve multiple users concurrently. While the open-source version only supports one R process per app. Since R is single-threaded, sharing an R process would mean that users cannot do anything (not even load the UI) if R is occupied by other users. For computationally intensive apps (e.g. actions may take up to more than 10 seconds to run), this delay is unbearable. There are some ways to get around it, for example, the 'async' described in this [article](https://blog.rstudio.com/2018/06/26/shiny-1-1-0/). However, it is more effective when your apps have 'a small number of severe performance bottlenecks'. In the ideal world, we would still want multiple R processes for any app that could be used by multiple users at the same time. Shiny Server Pro and its enhanced solution [RStudio Connect](https://rstudio.com/products/connect/) can solve this issue. But if you only have one app, it probably doesn't warrant the cost.
+There are two versions of Shiny Server (both of them are developed by RStudio), one is the [Shiny Server Open Source](https://rstudio.com/products/shiny/shiny-server/), and the other is the commercially licensed [Shiny Server Pro](https://rstudio.com/products/shiny-server-pro/). The former is free while the latter will set you back $9,995 / year with its base plan (20 concurrent users). The key difference is that Shiny Server Pro natively supports a variety of password authentication schemes and a centralized management console for all your apps. But crucially, with Shiny Server Pro, you can launch multiple R processes per app, which can then serve multiple users concurrently. While the open-source version only supports one R process per app. Since R is single-threaded, sharing an R process would mean that users cannot do anything (not even load the UI) if R is occupied by other users. For computationally intensive apps (e.g. actions may take up to more than 10 seconds to run), this delay is unbearable. There are some ways to get around it, for example, the 'async' described in this [article](https://blog.rstudio.com/2018/06/26/shiny-1-1-0/). However, it is more effective when your apps have a small number of severe performance bottlenecks'. In the ideal world, we would still want multiple R processes for any app that could be used by multiple users at the same time. Shiny Server Pro and its enhanced solution [RStudio Connect](https://rstudio.com/products/connect/) can solve this issue. But if you only have one app, it probably doesn't warrant the cost.
 
 ### ShinyProxy on own infrastructure or cloud
 
@@ -502,7 +502,11 @@ docker run -d -v /var/run/docker.sock:/var/run/docker.sock --net sp-example-net 
 That's it. After a few seconds, the example ShinyProxy app will be available at the public DNS of your instance (e.g. ec2-X-XX-XXX-XX.compute-1.amazonaws.com). Now we have a fully functional Shiny app served by ShinyProxy and hosted on AWS. In another post, I will go through a couple of options to make our apps more secure. Stay tuned!
 
 {{% alert note  %}}
-3 May 2020 Update:
+1 June 2020 Update:
 
-A new tutorial on [Securing and monitoring ShinyProxy deployment of R Shiny apps]({{< ref "/post/secure-shinyproxy/index.md" >}}) is now available.
+New tutorials in this series are available:
+
+* [Securing and monitoring ShinyProxy deployment of R Shiny apps]({{< ref "/post/secure-shinyproxy/index.md" >}})
+* [Effectively Deploying and Scaling Shiny Apps with ShinyProxy, Traefik and Docker Swarm]({{< ref "/post/shinyproxy-with-docker-swarm/index.md" >}})
+
 {{% /alert %}}
