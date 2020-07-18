@@ -4,8 +4,8 @@
 #   The weight parameter defines the order that the links will appear in.
 
 [[main]]
-  name = "About me"
-  url = "#about"
+  name = "About us"
+  url = "#about_yihui"
   weight = 80
 
 [[main]]
