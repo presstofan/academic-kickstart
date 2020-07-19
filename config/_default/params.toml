@@ -9,7 +9,7 @@
 #   Latest themes (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in themes in `themes/academic/data/themes/`
 #   Browse user installed themes in `data/themes/`
-theme = "Rose" # 1950s, Apogee, Coffee, Dark, Forest, Minimal, Mr Robot, Ocean, Rose, Strawberry
+theme = "Minimal" # 1950s, Apogee, Coffee, Dark, Forest, Minimal, Mr Robot, Ocean, Rose, Strawberry
 
 # Enable users to switch between day and night mode?
 day_night = true
@@ -44,7 +44,7 @@ local_business_type = ""
 org_name = ""
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = "Data science and visualisation blog"
+description = "Data science and analytics blog"
 
 # Display a logo in navigation bar rather than title (optional).
 #   To enable, place an image in `static/img/` and reference its filename below. To disable, set the value to "".
