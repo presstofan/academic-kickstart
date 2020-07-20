@@ -9,7 +9,7 @@
 #   Latest themes (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in themes in `themes/academic/data/themes/`
 #   Browse user installed themes in `data/themes/`
-theme = "Ocean" # 1950s, Apogee, Coffee, Dark, Forest, Minimal, Mr Robot, Ocean, Rose, Strawberry
+theme = "Minimal" # 1950s, Apogee, Coffee, Dark, Forest, Minimal, Mr Robot, Ocean, Rose, Strawberry
 
 # Enable users to switch between day and night mode?
 day_night = true
@@ -18,7 +18,7 @@ day_night = true
 #   Latest font sets (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in font sets in `themes/academic/data/fonts/`
 #   Browse user installed font sets in `data/fonts/`
-font = "traditional serif"
+# font = "traditional serif"
 
 # Choose a font size.
 # Sizes: XS (extra small), S (small), M (medium), L (large - DEFAULT), XL (extra large)
