@@ -30,13 +30,13 @@ education:
   courses:
   - course: MSc in Sociology
     institution: University of Oxford
-    year: 2014
+    year:
   - course: BA Linguistics and Sociology 
     institution: University of Manchester
-    year: 2013
+    year:
   - course: BA English Language
     institution: Beijing Language and Culture University
-    year: 2011
+    year:
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons

@@ -30,13 +30,13 @@ education:
   courses:
   - course: MSc in Machine Learning
     institution: Birkbeck, University of London
-    year: 2018
+    year:
   - course: MSc in Quantitative Social Science
     institution: University of Oxford
-    year: 2014
+    year:
   - course: BA Linguistics and Sociology 
     institution: University of Manchester
-    year: 2013
+    year:
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
