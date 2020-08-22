@@ -360,7 +360,7 @@ It is named as `traefik_traefik` because it is deployed into a stack called `tra
 docker service logs traefik_traefik
 ```
 
-A few minutes after deploying the stack, Traefik should set up the SSL certificate for your site using Let' Encrypt. You may find this is much easier and cleaner than my previous solution. Now, check out traefik.sys.example.com. You should see the Traefik dashboard (use the username and password you just set to log in).
+A few minutes after deploying the stack, Traefik should set up the SSL certificate for your site using Let' Encrypt. You may find this is much easier and cleaner than my previous solution. Now, check out traefik.sys.app.example.com. You should see the Traefik dashboard (use the username and password you just set to log in).
 
 ![Traefik Dashboard 1](traefik_dashboard_1.png)
 
