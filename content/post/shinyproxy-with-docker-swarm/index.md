@@ -8,7 +8,7 @@ authors: [Yihui Fan]
 tags: [R, R Shiny, ShinyProxy]
 categories: [R Shiny]
 date: 2020-05-31T18:35:35+01:00
-lastmod: 2020-05-31T18:35:35+01:00
+lastmod: 2020-08-24T23:18:00+01:00
 featured: true
 draft: false
 
@@ -36,6 +36,13 @@ Depending on what you are looking for and your experience with Docker technology
 * For securely deploying Shiny apps on Clouds (single node, the docker-compose way): [Securing and Monitoring ShinyProxy Deployment of R Shiny Apps]({{< ref "/post/secure-shinyproxy/index.md" >}})
 
 * For deploying secure, scalable, production-grade Shiny apps with Docker Swarm: This post
+
+{{% /alert %}}
+
+{{% alert note  %}}
+24 Aug 2020 Update:
+
+I have added a section to show how we can deploy Shiny apps in the Swarm without the ShinyProxy stack.
 
 {{% /alert %}}
 
@@ -571,6 +578,112 @@ Give it a minute and check `app.example.com` and you will see the login screen. 
 ![ShinyProxy](shinyproxy.png)
 
 If you go to the Traefik dashboard, you can now find the additional router, service and middleware related to ShinyProxy.
+
+## (Optional) Deploying R Shiny apps without ShinyProxy
+
+ShinyProxy is designed in the way that each user is assigned a separate container (or docker service in the Swarm mode). Because R is single-threaded, separating users into different containers/services allows users to enjoy the whole R process. This is particularly beneficial if the app is computationally intensive. If one user is using the app and performing some heavy computation, the other users who share the R process might find it hard to even navigate through the UI (as most of the dynamic UI in Shiny apps is rendered in R). ShinyProxy also provides a couple more enterprise-grade benefits. For example, it acts as a portal and can host multiple Shiny apps and grant access right to different user groups. It also integrates well with most of the common authentication frameworks (e.g. OpenID Connect, SAML 2.0 and social authentications).
+
+However, if the app we want to deploy is lightweight. The overhead of ShinyProxy (about 2-300 MB of RAM) is hard to justify. In this case, we can simply launch the app as a service in the Swarm. Below is a short guide on how to do this. Please clone [my GitHub repo](https://github.com/presstofan/shinyproxy-docker-swarm-demo) if you haven't done so (note that I have added a new file `standaloneapp.yml` on 24 Aug 2020):
+
+```{sh}
+git clone https://github.com/presstofan/shinyproxy-docker-swarm-demo.git
+```
+
+The `standaloneapp.yml` file is very similar to the `shinyproxy.yml` file we went through earlier, except that I have replaced the `ShinyProxy` service with the `euler` service. There are also some other changes to note:
+
+1. The port for the `euler` service is set to 3838. This is because when we create the image, we set it to open the port as default. It could be something else but we need to change the Dockerfile for the `euler` image accordingly. Note that the port under the labels also need to be update.
+2. I commented out the `- node.role==manager` under the `placement: constraints:`. Because this service is the app itself, we don't need to limit it to the manager node. When we launch new workers, we want the load balancer to work and deploy the replicas of the app service to the new workers. I actually prefer to set it up to only deploy on worker nodes and let the manager node to handle just the Traefik stack. In this way, we can avoid the manager being overloaded with app requests.
+3. `APP_DOMAIN` is what we set up earlier (e.g. app.example.com). If you want to host multiple apps you could set up different domains (e.g. app1.example.com, app2.example.com). You then need to set up a service for each app and specify the domain in the labels section of that service (e.g. replacing `APP_DOMAIN`). Traefik will route the visitors to different app services based on the domain specified.
+4. Note that `replicas` has been set up to one. You may want to tweak it to find the right number given your Swarm cluster and the demand. Of course, you can scale it up and down afterwards.
+
+<details>
+<summary>SHOW standaloneapp.yml</summary>
+<p>
+
+```{yml}
+version: '3.3'
+
+services:
+
+  euler:
+    image: presstofan/shiny-euler-app
+    # The labels section is where you specify configuration values for Traefik.
+    # Docker labels don’t do anything by themselves, but Traefik reads these so
+    # it knows how to treat containers.
+    ports:
+      - 3838
+    networks:
+      - traefik-public
+      - sp-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      # placement:
+      #   constraints:
+      #     - node.role==manager
+      labels:
+          - traefik.enable=true # enable traefik
+          - traefik.docker.network=traefik-public # put it in the same network as traefik
+          - traefik.constraint-label=traefik-public # assign the same label as traefik so it can be discovered
+          - traefik.http.routers.shinyproxy.rule=Host(`${APP_DOMAIN?Variable not set}`) # listen to port 80 for request to APP_DOMAIN (use together with the line below)
+          - traefik.http.routers.shinyproxy.entrypoints=http
+          - traefik.http.middlewares.shinyproxy.redirectscheme.scheme=https # redirect traffic to https
+          - traefik.http.middlewares.shinyproxy.redirectscheme.permanent=true # redirect traffic to https
+          - traefik.http.routers.shinyproxy-secured.rule=Host(`${APP_DOMAIN?Variable not set}`) # listen to port 443 for request to APP_DOMAIN (use together with the line below)
+          - traefik.http.routers.shinyproxy-secured.entrypoints=https
+          - traefik.http.routers.shinyproxy-secured.tls.certresolver=le # use the Let's Encrypt certificate we set up earlier
+          - traefik.http.services.shinyproxy-secured.loadbalancer.server.port=3838 # ask Traefik to search for port 3838 of the shinyproxy service container
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  traefik-public:
+    external: true
+  sp-net:
+    external: true
+```
+
+</p>
+</details>
+
+---
+
+First, we need to remove the `ShinyProxy` service if we have it up and running.
+
+```{sh}
+docker service rm shinyproxy_shinyproxy
+```
+
+Then, deploy the service with the new yaml file. We will call it `app`.
+
+```{sh}
+docker stack deploy -c standaloneapp.yml app
+```
+
+We can check the status of the service using:
+
+```{sh}
+docker service ls
+```
+
+You will see the following services (it can take a few minutes to download the images for the first time):
+
+```{sh}
+ID                  NAME                MODE                REPLICAS            IMAGE                               PORTS
+djk0kq5hbxvh        app_euler           replicated          1/1                 presstofan/shiny-euler-app:latest   *:30001->3838/tcp
+owkw6bd01nkg        traefik_traefik     replicated          1/1                 traefik:v2.2                        *:80->80/tcp, *:443->443/tcp
+```
+
+Give it a minute and check `app.example.com` and you will see the `euler` app.
+
+We can scale up the number of replicas:
+
+```{sh}
+docker service update app_euler --replicas 2
+```
+
+There are many things we can tweak using the `service update`, such as cpu and memory limit. Please see [here](https://docs.docker.com/engine/reference/commandline/service_update/) for details.
 
 ## Scaling your Swarm cluster
 
