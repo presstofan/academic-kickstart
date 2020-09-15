@@ -532,3 +532,76 @@ CONTAINER ID        NAME                                          CPU %         
 
 There are many things we can tweak using the `service update`, such as cpu and memory limit. Please see [here](https://docs.docker.com/engine/reference/commandline/service_update/) for details.
 
+### Step 5: Scaling your Swarm cluster
+
+Now comes to the interesting part. Let's say if your app is getting popular and you want to launch an additional server to share the workload. You can easily add nodes to your Swarm.
+
+First, we need to launch another AWS instance (or server from other Clouds). Repeat the steps above but this time we want to use the security group settings for Swarm Workers.
+
+<details>
+<summary>SHOW AWS security group settings</summary>
+<p>
+
+Swarm Worker Security Group (Inbound Rules):
+
+| TYPE            | PROTOCOL | PORTS | SOURCE                     |
+|-----------------|----------|-------|----------------------------|
+| Custom TCP Rule | TCP      | 7946  | Swarm managers and workers |
+| Custom UDP Rule | UDP      | 7946  | Swarm managers and workers |
+| Custom UDP Rule | UDP      | 4789  | Swarm managers and workers |
+| Custom Protocol | 50       | all   | Swarm managers and workers |
+| SSH             | TCP      | 22    | Your ip                    |
+
+</p>
+</details>
+
+---
+
+SSH into the new instance and install Docker Engine as above. When that is done, we need to join the Swarm we set up and the join token we got from the Manager node would come in handy. Run it in the new instance. The token would look like something below:
+
+```{sh}
+docker swarm join --token SWMTKN-1-xxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxx 172.x.x.x:2377
+```
+
+If successful, you would see the message 'This node joined a swarm as a worker.' If you now switch to the Manager node shell and run:
+
+```{sh}
+docker node ls
+```
+
+You would see:
+
+```{sh}
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+5b6py13brdoihrcct9oy68wpq *   ip-172-31-49-53     Ready               Active              Leader              19.03.10
+3j3ecsf4fhz3cwhu98w5cv1bo     ip-172-31-71-189    Ready               Active                                  19.03.10
+```
+
+Congratulations! You have just created your two-node Swarm. Traefik and ShinyProxy only get deployed on the Manager node as we instructed but the Shiny apps can be deployed to the Worker nodes. Docker as the load balancer will manage that automatically. You can verify this by launching the app and `docker service ls` the services. The Shiny app is hosted by the new service `sp-service-xxxxxx`. You can use `docker service ps SERVICE` to check the node the service is on. Note that the first time you deploy a service to a node it will take some time to download the images. But it won't be a problem later on as it should have the images in the cache. Another point I want to mention is that you may have to launch the app with another username created in the `application.yml` to see two Shiny services. This is because ShinyProxy assigns service/container by the user, not session. When a user signs out, the service/container is removed.
+
+```{sh}
+ID                  NAME                                              MODE                REPLICAS            IMAGE                                  PORTS
+llqkqa5fjymj        shinyproxy_euler                                  replicated          1/1                 presstofan/shiny-euler-app:latest
+dgiss3o277q2        shinyproxy_shinyproxy                             replicated          1/1                 presstofan/shinyproxy-example:latest   *:30000->8080/tcp
+4y0yljabbwld        sp-service-1d6329ff-1f03-47d5-a297-efd1d2e20f88   replicated          1/1                 presstofan/shiny-euler-app
+moybzwb7mq15        traefik_traefik                                   replicated          1/1                 traefik:v2.2                           *:80->80/tcp, *:443->443/tcp
+
+```
+
+#### Choosing the number of nodes
+
+Here are some notes on choosing the number of nodes. In theory, you can set up more than one Manager nodes (e.g. three or even five). However, the community edition of Traefik won't support distributed Let's Encrypt certificate, meaning that only one of the node can be your gateway and your DNS need to point the domain to that node. If you are building a complex app that requires HA, you want to check [Traefik Enterprise Edition](https://containo.us/traefikee/). For many use cases, making your primary Manager node sufficiently powerful (e.g. 2 GiB of memory) and offload Shiny apps to the workers would be good enough. There is less constraint in choosing the number of worker nodes and the specs depend on the app you serve.
+
+#### Rebalancing nodes
+
+When you add a new node to a Swarm or a node reconnects to the Swarm after a period of unavailability, the Swarm does not automatically give a workload to the idle node. According to Docker, this is a design decision.
+
+> If the swarm periodically shifted tasks to different nodes for the sake of balance, the clients using those tasks would be disrupted. The goal is to avoid disrupting running services for the sake of balance across the swarm. When new tasks start, or when a node with running tasks becomes unavailable, those tasks are given to less busy nodes. The goal is eventual balance, with minimal disruption to the end user.
+
+If needed, we could force the nodes to rebalance by using the command below:
+
+```{sh}
+docker service update --force
+```
+
+This is pretty handy if you have just added or removed many nodes. However, the update causes the service tasks to restart. Client applications may be disrupted.

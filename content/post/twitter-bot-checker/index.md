@@ -28,6 +28,10 @@ image:
 projects: []
 ---
 
+{{% alert warning  %}}
+Due to the change of Botomter API, this code is no longer working. Please check out the [new post]({{< ref "/post/twitter-bot-checker-plus/index.md" >}}).
+{{% /alert %}}
+
 I have recently completed a small research project in which I need to check how many followers of a particular Twitter account are actual human and how many are bots. Bots are not always bad, some bots were built to be interesting and helpful. Nevertheless, there are also bots that spam you or simply do not interact with you in any healthy way. The following scripts get all the followers from a Twitter account and pass the relevant information to an online bot detector called `Botometer (formerly BotOrNot)` (click [here](https://botometer.iuni.iu.edu) for more information). It checks the activity of a Twitter account and gives it a score based on how likely the account is to be a bot. Higher scores are more bot-like. About 30% of the followers of the two accounts I have tested are bots or have some bot-like behaviours. Want to find about your account? Ok, here we go.
 
 ## Step 1: Get all the followers for your account
