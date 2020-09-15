@@ -28,7 +28,9 @@ image:
 projects: []
 ---
 
-A couple years back, I have written [a short Python code]([new post]({{< ref "/post/twitter-bot-checker/index.md" >}})) that retrieves all the followers for a specific account and check for bots using [Botometer](https://botometer.osome.iu.edu/). However, the Botometer has gone through some [major changes]() which renders the original code obsolete. It is time to create something new!
+<small><span>Photo by <a href="https://unsplash.com/@morningbrew?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Morning Brew</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span></small>
+
+A couple years back, I have written [a short Python code]({{< ref "/post/twitter-bot-checker/index.md" >}}) that retrieves all the followers for a specific account and check for bots using [Botometer](https://botometer.osome.iu.edu/). However, the Botometer has gone through some [major changes]() which renders the original code obsolete. It is time to create something new!
 
 Many new tools have become available since, including [Streamlit](https://www.streamlit.io/). According to Streamlit's developers:
 
@@ -62,6 +64,8 @@ Please see [this page](https://github.com/IUNetSci/botometer-python#rapidapi-and
 3. Specify the account whose followers need to be checked, and set the timeframe you want to keep the bot check data.
 4. Run "Retrieve Twitter followers", which uses Tweepy API to retrieve all the followers of a specific account. If a database is provided or cached in the temp folder, the app will only add new followers that are not already in the database. If no database is available, the app will create a new database from scratch.
 5. Run "Check bot", which call the Botometer Rapid API to check for bots in the database. It will not re-check the followers unless the bot data is expired. A download link will be available at the bottom of the sidebar when the process is completed. Alternatively, you can click the "Download bot check results" button to get the download link.
+
+![Demo Animation](https://github.com/presstofan/twitter-bot-checker/blob/master/app-demo.gif?raw=true "Demo Animation")
 
 ### Results
 
