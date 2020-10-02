@@ -164,7 +164,7 @@ sudo usermod -aG docker ubuntu
 
 And don't forget the logout and back in for this change to take effect. Then you should be able to run docker commands without using `sudo`.
 
-### Setting up Docker Swarm
+### Step 2: Setting up Docker Swarm
 
 As mentioned, you just need one line of command to initiate a Docker Swarm, as it is built into the standard Docker Engine.
 
@@ -187,7 +187,7 @@ docker swarm join-token manager
 
 Note down the join commands. To add nodes to the current Swarm as a manager or worker, you simply need to launch another instance, install Docker Engine and run the join commands. However, we don't need to set them up for now.
 
-### Step 2: Setting up domains for your app and system dashboards
+### Step 3: Setting up domains for your app and system dashboards
 
 Let's say you own the domain `example.com` and you want to use the subdomain `app.example.com` for your app. You need to create the following DNS records for your app and Traefik dashboard:
 
@@ -196,7 +196,7 @@ Let's say you own the domain `example.com` and you want to use the subdomain `ap
 | A           | app.example.com             | IP of your Swarm Master instance |
 | A           | traefik.sys.app.example.com | IP of your Swarm Master instance |
 
-### Step 3: Setting up Traefik stack
+### Step 4: Setting up Traefik stack
 
 Our next task is to set up the proxy/load balancer Traefik. If you have read my previous post [Securing and monitoring ShinyProxy deployment of R Shiny apps]({{< ref "/post/secure-shinyproxy/index.md" >}}), you may wonder why I switched away from Nginx to Traefik. This is mainly due to the ease of set up. Nginx settings can end up in huge config maps that are hard to read and manage. This is not an issue with Traefik, which allows you to use Docker labels to manage configs. We will see this later in the tutorial.
 
@@ -411,26 +411,30 @@ There are some key concepts, which I have summarised below:
 
 These were created using the commands and labels in the `traefik.yml` file. For details, you may want to check the [official Traefik documentation](https://docs.traefik.io/).
 
-### Step 4: Setting up the Streamlit GAN demo app stack
+### Step 5: Setting up the Streamlit GAN demo app stack
 
-Now that we have set up the reverse proxy and load balancer, we can simply launch the demo Streamlit GAN app as a service in the Swarm. Please clone [my GitHub repo](https://github.com/presstofan/shinyproxy-docker-swarm-demo).
+Now that we have set up the reverse proxy and load balancer, we can simply launch the demo Streamlit GAN app as a service in the Swarm. Please clone [my GitHub repo](https://github.com/presstofan/python-app-docker-swarm-stack).
 
 ```{sh}
-git clone https://github.com/presstofan/shinyproxy-docker-swarm-demo.git
+git clone https://github.com/presstofan/python-app-docker-swarm-stack.git
 ```
 
-The `standalonestapp.yml` file is what we need. This yaml file instructs Docker to set up a service in the Swarm. Unlike containers, a service can have many replicas (containers from the same image) to make sure the demand for the app can be met. These replicas will be deployed to different nodes of the Docker Swarm cluster and Traefik will make sure they are load balanced. I have copied `standalonestapp.yml` file below and there are something you should know:
+```{sh}
+cd python-app-docker-swarm-stack
+```
+
+The `stapp.yml` file is what we need. This yaml file instructs Docker to set up a service in the Swarm. Unlike containers, a service can have many replicas (containers from the same image) to make sure the demand for the app can be met. These replicas will be deployed to different nodes of the Docker Swarm cluster and Traefik will make sure they are load balanced. I have copied `stapp.yml` file below and there are something you should know:
 
 1. There is only one service in this stack, which is called `stapp`, which you can customise.
 2. `image` is set to point to the Streamlit demo app uploaded to my Docker Hub repo. Using Docker Hub (or other similar services) to store images will make the deployment workflow much easier. If you want to deploy your own app, simply register a Docker Hub account and push the local image to it. You can find the quick start guide [here](https://docs.docker.com/docker-hub/).
 3. The port for the `stapp` service is set to 8501. This is because when we create the image, we set it to open this port as default. It could be something else but we need to change the Dockerfile for the `streamlit-demo` image accordingly. Note that the port under the labels also need to be update.
 4. Two overlay network need to be specified. `traefik-public` is used by the Traefik service, which will route the public HTTP/HTTPS requests to relevant services. `sp-net` is used
-4. I commented out the `- node.role==manager` under the `placement: constraints:`. Because this service is the app itself, we don't need to limit it to the manager node. When we launch new workers, we want the load balancer to work and deploy the replicas of the app service to the new workers. I actually prefer to set it up to only deploy on worker nodes and let the manager node to handle just the Traefik stack. In this way, we can avoid the manager being overloaded with app requests.
-5. `APP_DOMAIN` is what we set up earlier (e.g. app.example.com). If you want to host multiple apps you could set up different domains (e.g. app1.example.com, app2.example.com). You then need to set up a service for each app and specify the domain in the labels section of that service (e.g. replacing `APP_DOMAIN`). Traefik will route the visitors to different app services based on the domain specified.
-6. Note that `replicas` has been set up to one. You may want to tweak it to find the right number given your Swarm cluster and the demand. Of course, you can scale it up and down afterwards.
+5. I commented out the `- node.role==manager` under the `placement: constraints:`. Because this service is the app itself, we don't need to limit it to the manager node. When we launch new workers, we want the load balancer to work and deploy the replicas of the app service to the new workers. I actually prefer to set it up to only deploy on worker nodes and let the manager node to handle just the Traefik stack. In this way, we can avoid the manager being overloaded with app requests.
+6. `APP_DOMAIN` is what we set up earlier (e.g. app.example.com). If you want to host multiple apps you could set up different domains (e.g. app1.example.com, app2.example.com). You then need to set up a service for each app and specify the domain in the labels section of that service (e.g. replacing `APP_DOMAIN`). Traefik will route the visitors to different app services based on the domain specified.
+7. Note that `replicas` has been set up to one. You may want to tweak it to find the right number given your Swarm cluster and the demand. Of course, you can scale it up and down afterwards.
 
 <details>
-<summary>SHOW standalonestapp.yml</summary>
+<summary>SHOW stapp.yml</summary>
 <p>
 
 ```{yml}
@@ -447,7 +451,6 @@ services:
       - 8501
     networks:
       - traefik-public
-    #  - sp-net
     deploy:
       replicas: 1
       restart_policy:
@@ -473,8 +476,6 @@ services:
 networks:
   traefik-public:
     external: true
-  # sp-net:
-  #  external: true
 ```
 
 </p>
@@ -488,10 +489,10 @@ Before deploying the app service, let's set up the environment variable `APP_DOM
 export APP_DOMAIN=app.example.com
 ```
 
-Then, let's deploy the service with the `standaloneapp.yml` file and call it `app`.
+Then, let's deploy the service with the `stapp.yml` file and call it `app`.
 
 ```{sh}
-docker stack deploy -c standalonestapp.yml app
+docker stack deploy -c stapp.yml app
 ```
 
 We can check the status of the service using:
@@ -515,6 +516,7 @@ This is only one replica of this service so users will share the resource from t
 ```{sh}
 docker service update app_euler --replicas 2
 ```
+
 Now if you run:
 
 ```{sh}
@@ -532,7 +534,7 @@ CONTAINER ID        NAME                                          CPU %         
 
 There are many things we can tweak using the `service update`, such as cpu and memory limit. Please see [here](https://docs.docker.com/engine/reference/commandline/service_update/) for details.
 
-### Step 5: Scaling your Swarm cluster
+### Step 6: Scaling your Swarm cluster
 
 Now comes to the interesting part. Let's say if your app is getting popular and you want to launch an additional server to share the workload. You can easily add nodes to your Swarm.
 
@@ -605,3 +607,46 @@ docker service update --force
 ```
 
 This is pretty handy if you have just added or removed many nodes. However, the update causes the service tasks to restart. Client applications may be disrupted.
+
+### (Optional) Step 7: Adding the Keycloak authentication layer
+
+| RECORD TYPE | NAME                         | VALUE                            |
+|-------------|------------------------------|----------------------------------|
+| A           | keycloak.sys.app.example.com | IP of your Swarm Master instance |
+
+```{sh}
+export KEYCLOAK_DOMAIN=keycloak.sys.app.example.com
+```
+
+```{sh}
+export KEYCLOAK_DOMAIN=keycloak.sys.app.example.com
+```
+
+```{sh}
+docker network create --driver=overlay keycloak-net
+```
+
+
+Then, let's deploy the Keycloak server service with the `keycloak.yml` file and call it `keycloak`.
+
+```{sh}
+docker stack deploy -c keycloak.yml keycloak
+```
+
+We can check the status of the service using:
+
+```{sh}
+docker service ls
+```
+
+You will see two additional Keycloak services (again, it can take a few minutes to download the images for the first time):
+
+```{sh}
+ID                  NAME                   MODE                REPLICAS            IMAGE                              PORTS
+leqx49lfktgl        app_stapp              replicated          1/1                 presstofan/streamlit-demo:latest   *:30000->8501/tcp
+e8sikdsjltzy        keycloak_keycloak      replicated          1/1                 jboss/keycloak:11.0.2
+lwsiidfav2oe        keycloak_keycloak_db   replicated          0/1                 postgres:11.2-alpine
+2eu098a9usi6        traefik_traefik        replicated          1/1                 traefik:v2.2                       *:80->80/tcp, *:443->443/tcp
+```
+
+Give it a minute and check `keycloak.sys.app.example.com` and you will see the Keycloak management. If you go to the Traefik dashboard, you can now find the additional router, service and middleware related to ShinyProxy.

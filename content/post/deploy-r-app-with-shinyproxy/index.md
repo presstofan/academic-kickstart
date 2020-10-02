@@ -194,7 +194,7 @@ ShinyProxy uses one or more Docker images to serve Shiny apps to end-users. Such
 * all the necessary dependencies (e.g. R packages your app depends on)
 * all the scripts (e.g. ui.R, server.R and modules) and resources (e.g. images) used by your app
 
-We will follow the example provided by ShinyProxy. All the files mentioned below can be found in this [repo](https://github.com/openanalytics/shinyproxy-template)
+We will follow the example provided by ShinyProxy. All the files mentioned below can be found in this [repo](https://github.com/openanalytics/shinyproxy-template). You can clone this repo if you don't want to create the files below from scratch.
 
 ### Writing a Docker File
 
@@ -238,7 +238,8 @@ RUN R -e "install.packages('Rmpfr', repos='https://cloud.r-project.org/')"
 
 # copy the example euler app (with the ui.R and server.R files)
 # onto the image in folder /root/euler
-RUN mkdir /root/eulerCOPY euler /root/euler
+RUN mkdir /root/euler
+COPY euler /root/euler
 
 # copy the Rprofile.site set up file to the image.
 # this make sure your Shiny app will run on the port expected by
