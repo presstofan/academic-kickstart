@@ -9,7 +9,7 @@ tags: [Python, Streamlit, Dash, Docker, Traefik, Keycloak]
 categories: [Python]
 date: 2020-10-08T14:30:54+01:00
 lastmod: 2020-10-08T14:30:54+01:00
-featured: ture
+featured: true
 draft: false
 
 # Featured image
