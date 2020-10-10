@@ -26,17 +26,17 @@ interests:
 - Data Visualisation
 - Behavioural Science
 
-education:
-  courses:
-  - course: MSc in Machine Learning
-    institution: Birkbeck, University of London
-    year:
-  - course: MSc in Quantitative Social Science
-    institution: University of Oxford
-    year:
-  - course: BA Linguistics and Sociology 
-    institution: University of Manchester
-    year:
+# education:
+#   courses:
+#   - course: MSc in Machine Learning
+#     institution: Birkbeck, University of London
+#     year:
+#   - course: MSc in Quantitative Social Science
+#     institution: University of Oxford
+#     year:
+#   - course: BA Linguistics and Sociology 
+#     institution: University of Manchester
+#     year:
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
@@ -73,6 +73,6 @@ user_groups:
 - Authors
 ---
 
-Working as a data scientist in a management consulting firm, Yihui's job involves helping businesses and policymakers to understand and manage consumer decision-making, solving business problems, generating data-driven insights, and developing data products.
+Working as a data scientist in a management consulting firm, My job involves helping businesses and policymakers to understand and manage consumer decision-making, solving business problems, generating data-driven insights, and developing data products.
 
-Yihui is also an AI / deep learning enthusiast and enjoy taking part in data science competitions and open source projects. If you find his posts interesting, please connect with him on {{< icon name="linkedin" pack="fab" >}}or{{< icon name="twitter" pack="fab" >}}and he is happy to chat more!
+I am also an AI / deep learning enthusiast and enjoy taking part in data science competitions and open source projects. If you find my posts interesting, please connect with me on {{< icon name="linkedin" pack="fab" >}}or{{< icon name="twitter" pack="fab" >}}. I am always happy to chat more!
