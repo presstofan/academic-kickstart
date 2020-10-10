@@ -32,7 +32,7 @@ projects: []
 
 ## Background
 
-Streamlit is a popular open-source framework for creating machine learning and visualisation apps in Python. Although it is fun making your own Streamlit apps, deploying a production-grade app can be quite painful. If you are a data scientist who just wants to get the work done but don't necessarily want to go down the DevOps rabbit hole, this tutorial offers a relatively straightforward deployment solution leveraging Docker Swarm and Traefik, with an option of adding user authentication with Keycloak. The first part of the tutorial is meant to be a gentle introduction to Docker. We will deploy a dockerised Streamilit demo app locally. The second part is about deploying the app in the cloud. These are two relatively standalone parts. You can skip the first section if you are already familiar with Docker technologies.
+Streamlit is a popular open-source framework for creating machine learning and visualisation apps in Python. Although it is fun making your own Streamlit apps, deploying a production-grade app can be quite painful. If you are a data scientist who just wants to get the work done but doesn't necessarily want to go down the DevOps rabbit hole, this tutorial offers a relatively straightforward deployment solution leveraging Docker Swarm and Traefik, with an option of adding user authentication with Keycloak. The first part of the tutorial is meant to be a gentle introduction to Docker. We will deploy a dockerised Streamilit demo app locally. The second part is about deploying the app in the cloud. These are two relatively standalone parts. You can skip the first section if you are already familiar with Docker.
 
 ## Deploying apps locally with Docker
 
@@ -61,7 +61,7 @@ First, let's clone the demo repo.
 git clone https://github.com/streamlit/demo-face-gan.git
 ```
 
-The `demo-face-gan` folder contains the data and the trained GAN models (`pg_gan` and `tl_gan`), the app script `app.py` and the `requirement.txt`. Normally, we would create a virtual environment and install the modules specified in the `requirement.txt`. But let's do in in the Docker way! Docker provides the ability to package and run an application in a loosely isolated environment called a container. Docker container is nothing but an environment virtualized during run-time to allow users to isolate applications from the system underpinning it. To spin off containers, we need Docker images, which are non-changeable file containing libraries, source code, tools and other files needed to run applications. Let's start by creating a Docker image for the demo app.
+The `demo-face-gan` folder contains the data and the trained GAN models (`pg_gan` and `tl_gan`), the app script `app.py` and the `requirement.txt`. Normally, we would create a virtual environment and install the modules specified in the `requirement.txt`. But let's do it in the Docker way! Docker provides the ability to package and run an application in a loosely isolated environment called a container. A Docker container is nothing but an environment virtualized during run-time to allow users to isolate applications from the system underpinning it. To spin off containers, we need Docker images, which are non-changeable files containing libraries, source code, tools and other files needed to run applications. Let's start by creating a Docker image for the demo app.
 
 We will need to create a file called `Dockerfile`. You can think of it as a set of instructions or blueprint to build the image. Copy the `Dockerfile` below to the `demo-face-gan` folder. Note that I have included comments in the file to explain each part. This is probably one of the simplest Dockerfile. For details of other options available in Dockerfiles, please see the [official document](https://docs.docker.com/engine/reference/builder/).
 
@@ -111,12 +111,12 @@ Visit http://localhost:8501 to view the app.
 
 ## Deploying the demo app on the cloud with Docker Swarm
 
-We have successfully run the app in a Docker container locally. But in order to make it easily accessible to other users, we will deploy it to the cloud using a container orchestration framework called Docker Swarm. You can think it as a cluster of machines on the cloud that hosts your app. You probably wonder why you need Docker Swarm if your app is hosted on a single server. Docker Captain Bret Fisher explained it well [here](https://github.com/BretFisher/ama/issues/8). I summarised a couple of key benefits of Docker Swarm below:
+We have successfully run the app in a Docker container locally. But in order to make it easily accessible to other users, we will deploy it to the cloud using a container orchestration framework called Docker Swarm. You can think of it as a cluster of machines on the cloud that hosts your app. You are probably wondering why you need Docker Swarm if your app is hosted on a single server. Docker Captain Bret Fisher explained it well [here](https://github.com/BretFisher/ama/issues/8). I summarised a couple of key benefits of Docker Swarm below:
 
 * Docker Swarm is fully supported by Docker Engine, which means it only takes a single line of command to create a Swarm.
 * You are future-proofed. If you want to scale out your app, you won't need to start from scratch. Again, with Docker Swarm, it is just a few commands away from adding more nodes.
-* The vanilla Docker run and docker-compose is only designed for development, not production, as it lacks a couple of important features out-of-the-box: 1) handling secret (that stores your keys and passwords securely) 2) auto-recovery of services, 3) rollbacks and 4) healtchecks. The last one is particularly crucial for production.
-* You are able to do rolling update with Docker Swarm, which means no downtime for your app.
+* The vanilla Docker run and docker-compose is only designed for development, not production, as it lacks a couple of important features out-of-the-box: 1) handling secret (that stores your keys and passwords securely) 2) auto-recovery of services, 3) rollbacks and 4) healthchecks. The last one is particularly crucial for production.
+* You are able to do rolling updates with Docker Swarm, which means no downtime for your app.
 * Finally, if you are already using docker-compose.yml file, it is just a couple tweaks away to make it Docker Swarm friendly!
 
 In terms of container orchestration tools, Kubernetes is more popular. It covers almost all the use cases and can be more flexible than Docker Swarm. Plus, many vendors adopt the 'Kubernetes first' support strategy and some clouds even manage/deploy Kubernetes for you. However, I'd still argue that Docker Swarm is adequate for 80% of the use cases and way much easier to set up. This means you can have your app running in hours rather than days!
@@ -125,7 +125,7 @@ We will put our app behind Traefik, which is a reverse proxy/load balancer. If y
 
 ### Step 1: Setting up the manager node
 
- There are many cloud computing providers. In this tutorial, I will use AWS EC2 but the following steps can be easily implemented in other platforms. First, please refer to [this post](https://towardsdatascience.com/how-to-host-a-r-shiny-app-on-aws-cloud-in-7-simple-steps-5595e7885722) for launching an AWS EC2 instance if you are new to EC2. Since the app is actually quite computationally intensive, I chose the `t3a.medium` instance (2 vCPU, 4 GiB memory) and pick the `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type` AMI. Unfortunately, this is not eligible for the free tier and will incur some cost (at $0.0376 per hour). You can switch to your own app, which may need less resource compared to the GAN demo app. But you may still want to deploy on an instance with at least 2GiB of memory due to other services that we need for this tutorial.
+ There are many cloud computing providers. In this tutorial, I will use AWS EC2 but the following steps can be easily implemented in other platforms. First, please refer to [this post](https://towardsdatascience.com/how-to-host-a-r-shiny-app-on-aws-cloud-in-7-simple-steps-5595e7885722) for launching an AWS EC2 instance if you are new to EC2. Since the app is actually quite computationally intensive, I chose the `t3a.medium` instance (2 vCPU, 4 GiB memory) and pick the `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type` AMI. Unfortunately, this is not eligible for the free tier and will incur some cost (at $0.0376 per hour). You can switch to your own app, which may need less resources compared to the GAN demo app. But you may still want to deploy on an instance with at least 2GiB of memory due to other services that we need for this tutorial.
 
 You also need to open the relevant ports so the Swarm nodes can communicate with each other and allow traffic to your app. You should use the AWS Security Group (or equivalent from other Clouds) for easy setup and management. Below are the specific settings:
 
@@ -417,7 +417,7 @@ Traefik is fairly complicated but we only need to use some of its functions so i
 * **Entrypoints**: Listen for incoming traffic (ports, ...). We have the 80 and 443 open for HTTP and HTTPS traffic.
 * **Routers**: Analyse the requests (host, path, headers, SSL, ...). Currently, we only route relevant to `traefik.sys.app.example.com`. We can set up other routers later.
 * **Services**: Forward the request to your services (load balancing, ...).
-* **Middlewares**: May update the request or make decisions based on the request (authentication, rate limiting, headers, ...)
+* **Middleware**: May update the request or make decisions based on the request (authentication, rate limiting, headers, ...)
 
 All the things above can be created using the commands and labels in the `traefik.yml` file. For details, you may want to check the [official Traefik documentation](https://docs.traefik.io/).
 
@@ -598,7 +598,7 @@ bf6ibptukrsz        app_stapp.2         presstofan/streamlit-demo:latest   ip-19
 
 #### Choosing the number of nodes
 
-Here are some notes on choosing the number of nodes. In theory, you can set up more than one Manager nodes (e.g. three or even five). However, the community edition of Traefik won't support distributed Let's Encrypt certificate, meaning that only one of the node can be your gateway and your DNS need to point the domain to that node. If you are building a complex app that requires HA, you want to check [Traefik Enterprise Edition](https://containo.us/traefikee/). For many use cases, making your primary Manager node sufficiently powerful (e.g. at least 2 GiB of memory, preferable 4 GiB) and offloading Shiny apps to the workers would be good enough. There is less constraint in choosing the number of worker nodes (although preferably an even number) and the specs depend on the app you serve.
+Here are some notes on choosing the number of nodes. In theory, you can set up more than one Manager nodes (e.g. three or even five). However, the community edition of Traefik won't support distributed Let's Encrypt certificate, meaning that only one of the node can be your gateway and your DNS need to point the domain to that node. If you are building a complex app that requires HA, you may want to consider [Traefik Enterprise Edition](https://containo.us/traefikee/). For many use cases, making your primary Manager node sufficiently powerful (e.g. at least 2 GiB of memory, preferable 4 GiB) and offloading Shiny apps to the workers would be good enough. There is less of a constraint in choosing the number of worker nodes (although preferably an even number) and the specs depend on the app you serve.
 
 #### Rebalancing nodes
 
@@ -616,7 +616,7 @@ This is pretty handy if you have just added or removed many nodes. However, the 
 
 ### (Optional) Step 7: Adding a Keycloak authentication layer
 
-Sometime we may want to protect the app behind a user authentication layer. This can be achieved via many authentication providers. In this tutorial, I will be using [Keycloak](https://www.keycloak.org/about), an open-source Identity and Access Management solution. I have previously shown how you can [add authentication to ShinyProxy using AWS Cognito]({{< ref "/post/shinyproxy-with-docker-swarm/index.md" >}}). Using Keycloak will give us more control. In a nutshell, we will create a Keycloak server which is used for managing users and providing authentication. We will then add an authentication client in front of our Stremlit app. Ideally, the Keycloak server and the app should be hosted by different AWS instances for security and reliability but for the sake of this tutorial, we will deploy both of them on the same instance.
+Sometimes we may want to protect the app behind a user authentication layer. This can be achieved via many authentication providers. In this tutorial, I will be using [Keycloak](https://www.keycloak.org/about), an open-source Identity and Access Management solution. I have previously shown how you can [add authentication to ShinyProxy using AWS Cognito]({{< ref "/post/shinyproxy-with-docker-swarm/index.md" >}}). Using Keycloak will give us more control. In a nutshell, we will create a Keycloak server which is used for managing users and providing authentication. We will then add an authentication client in front of our Streamlit app. Ideally, the Keycloak server and the app should be hosted by different AWS instances for security and reliability but for the sake of this tutorial, we will deploy both of them on the same instance.
 
 #### Setting up Keycloak server
 
@@ -803,7 +803,7 @@ Let's give it a name called `test`. After saving it, go to the Credential tab an
 
 #### Setting up Traefik Forward Auth
 
-We will set up a Traefik Forward Auth service to take care of the authentication process. The user flow is like this: user visit `app.example.com` for the first time and get redirected to the Traefik Forward Auth service, which will send the user to Keycloak for authentication. Once the user has logged in, she will be redirected back to Traefik Forward Auth service and it will check the authentication code. If successful, the user will be redirected to the app service.
+We will set up a Traefik Forward Auth service to take care of the authentication process. The user flow is like this: A user who visit `app.example.com` for the first time get redirected to the Traefik Forward Auth service, which will send the user to Keycloak for authentication. Once the user has logged in, she/he will be redirected back to Traefik Forward Auth service and it will check the authentication code. If successful, the user will be redirected to the app service.
 
 First, we need to take down the existing `app` stack (which doesn't require authentication).
 
@@ -912,11 +912,11 @@ Now, let's run:
 docker stack deploy -c stapp-auth.yml app
 ```
 
-Give it a minute and then visit `app.example.com`. You will see the Keycloak login page. Once logged in, you will be directed to the Streamlit app. Note that you can also log in with the admin account we created for Keycloak, but you can't use the test account to log in the Keycloak Administrative Console. This determined by the role mapping of each user. There are many things you can do with Keycloak. For example, you can allow user self registration, which is a useful feature for some apps. Check the [official document](https://www.keycloak.org/docs/latest/server_admin/index.html) if you are interested.
+Give it a minute and then visit `app.example.com`. You will see the Keycloak login page. Once logged in, you will be directed to the Streamlit app. Note that you can also log in with the admin account we created for Keycloak, but you can't use the test account to log in the Keycloak Administrative Console. This is determined by the role mapping of each user. There are many things you can do with Keycloak. For example, you can allow user self registration, which is a useful feature for some apps. Check the [official document](https://www.keycloak.org/docs/latest/server_admin/index.html) if you are interested.
 
 ### (Optional) Step 8: Monitoring Docker Swarm with Swarmpit
 
-[Swarmpit](https://github.com/swarmpit/swarmpit) provides simple and easy to use interface for your Docker Swarm cluster. You can manage your stacks, services, secrets, volumes, networks etc. To set this up, we first need to create another A record with our DNS provider to point to the Manager node ip address.
+[Swarmpit](https://github.com/swarmpit/swarmpit) provides simple and easy to use interface for your Docker Swarm cluster. You can manage your stacks, services, secrets, volumes, networks etc. To set this up, we first need to create another "A" record with our DNS provider to point to the Manager node IP address.
 
 | RECORD TYPE | NAME                        | VALUE                            |
 |-------------|-----------------------------|----------------------------------|
@@ -1096,4 +1096,4 @@ Finally, give it a minute or two and go to `swarmpit.sys.app.example.com` to acc
 
 ## Next Steps
 
-That concludes this tutorial. We should have a scalable Streamlit app served by Docker Swarm with a secured host, authentication service and monitoring capability. Using Docker Swarm and Traefik makes our lives much easier and the deployment should be future-proofed. One thing that is nice to have is the ability to elastically scale the app, meaning that new AWS EC2 instances will be automatically deployed and join the Swarm cluster in response to the app demand. This proofs to be a non-trivial task and I will continue to explore it in the future. But please post a comment below if you happen to know a good way of achieving it!
+That concludes this tutorial. We should have a scalable Streamlit app served by Docker Swarm with a secured host, authentication service and monitoring capability. Using Docker Swarm and Traefik makes our lives much easier and the deployment should be future-proofed. One thing that is nice to have is the ability to elastically scale the app, meaning that new AWS EC2 instances will be automatically deployed and join the Swarm cluster in response to the app demand. This proves to be a non-trivial task and I will continue to explore it in the future. But please post a comment below if you happen to know a good way of achieving it!

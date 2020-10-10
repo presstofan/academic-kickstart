@@ -1146,4 +1146,4 @@ docker service update shinyproxy_shinyproxy --force
 
 ## Next Steps
 
-That concludes this tutorial. We should have a scalable Shiny app served by ShinyProxy with a secured host and monitoring capability. Using Docker Swarm and Traefik makes our lives much easier and the deployment should be future-proofed. One thing that is nice to have is the ability to elastically scale the app. This proofs to be a non-trivial task and I will explore in future posts.
+That concludes this tutorial. We should have a scalable Shiny app served by ShinyProxy with a secured host and monitoring capability. Using Docker Swarm and Traefik makes our lives much easier and the deployment should be future-proofed. One thing that is nice to have is the ability to elastically scale the app. This proves to be a non-trivial task and I will explore in future posts. Leave me a comment below if you happen to find a way to do it!
