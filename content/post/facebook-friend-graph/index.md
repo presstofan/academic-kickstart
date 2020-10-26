@@ -10,7 +10,7 @@ categories: [Social Network]
 date: 2019-07-28T13:30:00Z
 lastmod: 2019-11-01T16:47:45Z
 featured: false
-draft: true
+draft: false
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
@@ -27,6 +27,10 @@ image:
 #   Otherwise, set `projects = []`.
 projects: []
 ---
+
+{{% alert warning  %}}
+The scraping script in Part I is no longer working (the last successful run was in Jan 2020). You may need to adjust it to retrieve the correct tags.
+{{% /alert %}}
 
 {{% toc %}}
 
@@ -94,7 +98,7 @@ def get_fb_page(url):
     return html_source
 ```
 
-`MyHTMLParser` is a class which help us to find the URLs to friends' home page. `find_friend_from_url` function simply direct us to a friend's home page by a given URL.
+`MyHTMLParser` is a class which helps us to find the URLs to friends' home page. `find_friend_from_url` function simply directs us to a friend's home page by a given URL.
 
 ```python
 def find_friend_from_url(url):
@@ -176,7 +180,7 @@ else:
 Next, we will use the URLs collected above to access the mutual friend page of each friend and retrieve the list of mutual friends. This is a slightly tricky part as Facebook are not happy with repetitive activities even you check your own friend list. It could temporarily ban you from accessing friend pages if you request more than 100 pages in one go. As such, the script is set to pause for half an hour at every 100 pages. If you are still uncomfortable with this rate, I would suggest further reduce the rate and leave the script running overnight. It will get the job done eventually.
 
 {{% alert warning  %}}
-You can set up the script so that it won't constantly refreshing the page, which may get you temporarily ban from accessing the friends page.
+You can set up the script so that it won't constantly refreshing the page, which may get you temporarily ban from accessing the `friends` page.
 {{% /alert %}}
 
 ```python
@@ -318,7 +322,7 @@ nx.draw_networkx(G, pos = pos, with_labels=False,
 limits=plt.axis('off') # turn of axis
 ```
 
-Below is the network graph generated. Blue dots (call "nodes") are friends and the lines (called "edges") are friendship ties. Since this is my Facebook friend network, everyone is connected to me (the central node). This visualisation uses a force-directed layout function to calculate the position of each node. Force-directed layouts work like springs (hence the name `spring_layout`). Imagine there are two types force: 1) spring-like attractive forces (based on Hooke's law) which attract pairs of endpoints of the graph's edges towards each other and 2) simultaneously repulsive forces (like those of electrically charged particles based on Coulomb's law) which separate all pairs of nodes. In equilibrium states for this system of forces, the edges tend to have uniform length (because of the spring forces), and nodes that are not connected by an edge tend to be drawn further apart (because of the electrical repulsion).
+Below is the network graph generated. Blue dots (call "nodes") are friends and the lines (called "edges") are friendship ties. Since this is my Facebook friend network, everyone is connected to me (the central node). This visualisation uses a force-directed layout function to calculate the position of each node. Force-directed layouts work like springs (hence the name `spring_layout`). Imagine there are two types force: 1) spring-like attractive forces (based on Hooke's law) which attract pairs of endpoints of the graph's edges towards each other and 2) simultaneously repulsive forces (like those of electrically charged particles based on Coulomb's law) which separate all pairs of nodes. In equilibrium states for this system of forces, the edges tend to have a uniform length (because of the spring forces), and nodes that are not connected by an edge tend to be drawn further apart (because of the electrical repulsion).
 
 ![Facebook Friends Network Graph](./facebook_graph.png)
 
