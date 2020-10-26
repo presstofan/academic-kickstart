@@ -10,7 +10,7 @@ categories: [Social Network]
 date: 2019-07-28T13:30:00Z
 lastmod: 2019-11-01T16:47:45Z
 featured: false
-draft: false
+draft: true
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
