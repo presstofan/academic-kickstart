@@ -10,7 +10,7 @@ categories: [COVID-19]
 date: 2020-03-16T23:44:31Z
 lastmod: 2020-03-16T23:44:31Z
 featured: false
-draft: false
+draft: true
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
