@@ -346,6 +346,10 @@ This set-up has several advantages according to ShinyProxy documents:
 
 Let's see how we can build this. First, we need to create a new folder. For example, we can call it `containerised_docker_engine`. Within the folder, we need to create a `Dockerfile` and an `application.yml` file. Examples of these two files can be found below:
 
+{{% alert warning  %}}
+Please note that this tutorial is based on ShinyProxy 2.3.0 (so does the docker image `presstofan/shinyproxy-example` below). 2.3.1 should also work but I haven't tested it on the latest version yet.
+{{% /alert %}}
+
 Dockerfile
 
 ```{Dockerfile}

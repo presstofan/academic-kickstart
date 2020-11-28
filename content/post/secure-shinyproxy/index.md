@@ -39,6 +39,10 @@ Depending on what you are looking for and your experience with Docker technology
 
 {{% /alert %}}
 
+{{% alert note  %}}
+If you don't mind using Docker Swarm and Traefik instead of docker-compose and Ngnix, the deployment method outlined in this post: [Effectively Deploying and Scaling Shiny Apps with ShinyProxy, Traefik and Docker Swarm]({{< ref "/post/shinyproxy-with-docker-swarm/index.md" >}}) is easier to set up.
+{{% /alert %}}
+
 {{% toc %}}
 
 ## Introduction
@@ -274,6 +278,10 @@ server {
 You will need to change all the instances of `app.example.com` (4 in total) to your own domain name and that's it! This configuration file instructs Nginx to listen port 80 (HTTP) for challenges (an important step for setting up the SSL certificate) and redirect traffic to port 443 (HTTPS), which has the certificate. Then the traffic will be directed to port 8080 of the local `shinyproxy` service where the magic happens. The full Nginx set up is fairly complicated and you can check the [official guide](https://www.nginx.com/resources/wiki/start/topics/examples/full/) to tailor it for your need.
 
 Next, we will set up `docker-compose.yml`, which link everything together.
+
+{{% alert warnining  %}}
+Please note that this tutorial is based on ShinyProxy 2.3.0 (so does the docker image `YOUR_USERNAME/shinyproxy-example` below if you followed the previous tutorial). 2.3.1 should also work but I haven't tested it on the latest version yet.
+{{% /alert %}}
 
 docker-compose.yml
 

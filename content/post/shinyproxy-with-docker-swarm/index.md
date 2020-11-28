@@ -475,6 +475,10 @@ logging:
 3. Similar to the `traefik` service, we want to only place the `shinyproxy` service on Swarm Manager nodes. We will start with only one replica.
 4. The labels section is where we specify configuration values for Traefik. Docker labels don’t do anything by themselves, but Traefik reads these so it knows how to treat containers. Note that this need to be service-level labels rather than container-level (i.e. under the `deploy` tag). In a nutshell, the labels instruct Traefik to watch out for requests for a particular domain (specified by the environment variable `APP_DOMAIN`, which we will set shortly) and route the traffic to port 8080 of the `shinyproxy` service.
 
+{{% alert warnining  %}}
+Please note that this tutorial is based on ShinyProxy 2.3.0 (so does the docker image `presstofan/shinyproxy-example` below). 2.3.1 should also work but I haven't tested it on the latest version yet.
+{{% /alert %}}
+
 <details>
 <summary>SHOW shinyproxy.yml</summary>
 <p>
