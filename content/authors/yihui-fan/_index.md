@@ -18,7 +18,7 @@ organizations:
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: I work as a data scientist at a management consultancy firm. I enjoy coding in R and Python, building data products and visualisation tools and I am also a deep learning enthusiast.
+bio: I enjoy messing with R and Python code, building data products and visualisation tools.
 
 interests:
 - Statistical Modelling
@@ -73,6 +73,4 @@ user_groups:
 - Authors
 ---
 
-Working as a data scientist in a management consulting firm, My job involves helping businesses and policymakers to understand and manage consumer decision-making, solving business problems, generating data-driven insights, and developing data products.
-
-I am also an AI / deep learning enthusiast and enjoy taking part in data science competitions and open source projects. If you find my posts interesting, please connect with me on {{< icon name="linkedin" pack="fab" >}}or{{< icon name="twitter" pack="fab" >}}. I am always happy to chat more!
+I enjoy messing with R and Python code, building data products and visualisation tools. If you find my posts interesting, please connect with me on {{< icon name="linkedin" pack="fab" >}}or{{< icon name="twitter" pack="fab" >}}. I am always happy to chat more!
